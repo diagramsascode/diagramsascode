@@ -24,7 +24,7 @@ public class DecisionNodeHasOneIncomingEdge implements DiagramNodeConstraint{
     if (node instanceof DecisionNode) {
       List<DiagramEdge> incomingEdges = diagram.getIncomingEdgesOf(node);
       if (incomingEdges.size() != 1) {
-        constraintViolation = new ConstraintViolation<>(this, node, "");
+        constraintViolation = new ConstraintViolation<>(this, node, "Decision node with id " + node.getId() + " should have 1 incoming edge, but has " + incomingEdges.size());
       }
     }
 

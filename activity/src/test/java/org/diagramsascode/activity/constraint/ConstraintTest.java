@@ -147,10 +147,17 @@ class ConstraintTest {
     assertEquals(DecisionNodeHasOneIncomingEdge.class, firstViolation.getConstraint().getClass());
     assertEquals(decisionNodeWithNoIncomingEdge, firstViolation.getDiagramElement());
     
+    String firstMessage = firstViolation.getMessage();
+    assertTrue(firstMessage.contains(decisionNodeWithNoIncomingEdge.getId()));
+    assertTrue(firstMessage.contains("0"));
+    
     ConstraintViolation<?> secondViolation = violations.get(1);
     
     assertEquals(DecisionNodeHasOneIncomingEdge.class, secondViolation.getConstraint().getClass());
     assertEquals(decisionNodeWithTwoIncomingEdges, secondViolation.getDiagramElement());
+    String secondMessage = secondViolation.getMessage();
+    assertTrue(secondMessage.contains(decisionNodeWithTwoIncomingEdges.getId()));
+    assertTrue(secondMessage.contains("2"));
   }
   
   @Test
