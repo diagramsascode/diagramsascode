@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.diagramsascode.activity.constraint.ActivityConstraints;
+import org.diagramsascode.activity.constraint.ActivityDiagramConstraints;
 import org.diagramsascode.activity.edge.ControlFlow;
 import org.diagramsascode.activity.node.Action;
 import org.diagramsascode.activity.node.DecisionNode;
 import org.diagramsascode.activity.node.FinalNode;
 import org.diagramsascode.activity.node.InitialNode;
 import org.diagramsascode.activity.node.MergeNode;
-import org.diagramsascode.core.Constraints;
+import org.diagramsascode.core.DiagramConstraints;
 import org.diagramsascode.core.Diagram;
 import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramNode;
@@ -25,7 +25,7 @@ class DiagramTest {
     Diagram diagram = Diagram.builder()
       .withNodes()
       .withEdges()
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
 
     Collection<DiagramNode> nodes = diagram.getNodes();
@@ -43,7 +43,7 @@ class DiagramTest {
     Diagram diagram = Diagram.builder()
       .withNodes(action)
       .withEdges(controlFlow)
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
 
     Collection<DiagramNode> actualNodes = diagram.getNodes();
@@ -73,7 +73,7 @@ class DiagramTest {
     final ControlFlow edge4 = new ControlFlow(action2, merge);
     final ControlFlow edge5 = new ControlFlow(merge, finalNode);
     
-    Constraints constraints = new ActivityConstraints();
+    DiagramConstraints constraints = new ActivityDiagramConstraints();
     
     Diagram diagram = Diagram.builder()
       .withNodes(initialNode, action1, decision, merge, action2, finalNode)

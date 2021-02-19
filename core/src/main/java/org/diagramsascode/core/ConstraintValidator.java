@@ -19,7 +19,7 @@ class ConstraintValidator {
   }
   
   public List<ConstraintViolation<?>> validate() {
-    Constraints diagramConstraints = diagram.getConstraints();
+    DiagramConstraints diagramConstraints = diagram.getConstraints();
 
     Collection<DiagramNodeConstraint> coreAndDiagramSpecificNodeConstraints = coreAndDiagramSpecificNodeConstraints(
         diagramConstraints);
@@ -33,7 +33,7 @@ class ConstraintValidator {
     return violations;
   }
 
-  private Collection<DiagramNodeConstraint> coreAndDiagramSpecificNodeConstraints(Constraints diagramConstraints) {
+  private Collection<DiagramNodeConstraint> coreAndDiagramSpecificNodeConstraints(DiagramConstraints diagramConstraints) {
     Collection<DiagramNodeConstraint> allConstraints = new ArrayList<>();
     Collection<DiagramNodeConstraint> coreNodeConstraints = coreConstraints.nodeConstraintsFor(diagram);
     Collection<DiagramNodeConstraint> diagramSpecificNodeConstraints = Objects.requireNonNull(diagramConstraints.nodeConstraintsFor(diagram),
@@ -43,7 +43,7 @@ class ConstraintValidator {
     return allConstraints;
   }
   
-  private Collection<DiagramEdgeConstraint> coreAndDiagramSpecificEdgeConstraints(Constraints diagramConstraints) {
+  private Collection<DiagramEdgeConstraint> coreAndDiagramSpecificEdgeConstraints(DiagramConstraints diagramConstraints) {
     Collection<DiagramEdgeConstraint> allConstraints = new ArrayList<>();
     Collection<DiagramEdgeConstraint> coreEdgeConstraints = coreConstraints.edgeConstraintsFor(diagram);
     Collection<DiagramEdgeConstraint> diagramSpecificEdgeConstraints = Objects.requireNonNull(diagramConstraints.edgeConstraintsFor(diagram),

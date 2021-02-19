@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 public class Diagram{
   private final List<DiagramNode> nodes;
   private final List<DiagramEdge> edges;
-  private final Constraints constraints;
+  private final DiagramConstraints constraints;
   
-  private Diagram(List<DiagramNode> nodes, List<DiagramEdge> edges, Constraints constraints) {
+  private Diagram(List<DiagramNode> nodes, List<DiagramEdge> edges, DiagramConstraints constraints) {
     this.nodes = Objects.requireNonNull(nodes, "nodes must be non-null");
     this.edges = Objects.requireNonNull(edges, "edges must be non-null");
     this.constraints = Objects.requireNonNull(constraints, "constraints must be non-null");    
@@ -36,14 +36,14 @@ public class Diagram{
     return edges;
   }
   
-  public Constraints getConstraints() {
+  public DiagramConstraints getConstraints() {
     return constraints;
   }
 
   public static class DiagramBuilder {
     private List<DiagramNode> nodes;
     private List<DiagramEdge> edges;
-    private Constraints constraints;
+    private DiagramConstraints constraints;
     
     private DiagramBuilder() {
     }
@@ -68,7 +68,7 @@ public class Diagram{
           DiagramBuilder.this.edges = new ArrayList<>(edgeList);
         }
 
-        public ConstraintsBuilder withConstraints(Constraints constraints) {
+        public ConstraintsBuilder withConstraints(DiagramConstraints constraints) {
           return new ConstraintsBuilder(constraints);
         }
         
@@ -77,7 +77,7 @@ public class Diagram{
         }
         
         public class ConstraintsBuilder{
-          private ConstraintsBuilder(Constraints constraints) {
+          private ConstraintsBuilder(DiagramConstraints constraints) {
             DiagramBuilder.this.constraints = constraints;
           }
           

@@ -21,12 +21,12 @@ public class Image {
     return new Image(imageSource);
   }
 
-  public DiagramDescription writeToFile(File outputFile) {
+  public DiagramDescription writeToPngFile(File outputFile) {
     FileOutputStream outputStream = outputStreamFor(outputFile);
-    return writeToStream(outputStream);
+    return writeToPngStream(outputStream);
   }
 
-  public DiagramDescription writeToStream(OutputStream outputStream) {
+  public DiagramDescription writeToPngStream(OutputStream outputStream) {
     SourceStringReader reader = readerOf(imageSource);
     return writeImageToStream(reader, outputStream);
   }

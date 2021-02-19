@@ -3,12 +3,12 @@ package org.diagramsascode.activity.constraint;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.diagramsascode.core.Constraints;
+import org.diagramsascode.core.DiagramConstraints;
 import org.diagramsascode.core.Diagram;
 import org.diagramsascode.core.DiagramEdgeConstraint;
 import org.diagramsascode.core.DiagramNodeConstraint;
 
-public class ActivityConstraints implements Constraints {
+public class ActivityDiagramConstraints implements DiagramConstraints {
 
   @Override
   public Collection<DiagramNodeConstraint> nodeConstraintsFor(Diagram diagram) {

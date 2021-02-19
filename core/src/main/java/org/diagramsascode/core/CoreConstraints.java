@@ -3,7 +3,7 @@ package org.diagramsascode.core;
 import java.util.Arrays;
 import java.util.Collection;
 
-class CoreConstraints implements Constraints {
+class CoreConstraints implements DiagramConstraints {
 
   @Override
   public Collection<DiagramNodeConstraint> nodeConstraintsFor(Diagram diagram) {

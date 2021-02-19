@@ -25,7 +25,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(foreignNode)
       .withEdges()
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     List<ConstraintViolation<?>> violations = diagram.validate();
 
@@ -47,7 +47,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(fromNode, toNode)
       .withEdges(foreignEdge)
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     List<ConstraintViolation<?>> violations = diagram.validate();
 
@@ -67,7 +67,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(action)
       .withEdges()
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     List<ConstraintViolation<?>> violations = diagram.validate();
 
@@ -89,7 +89,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(initialNode)
       .withEdges(invalidEdge)
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     
     List<ConstraintViolation<?>> violations = diagram.validate();
@@ -109,7 +109,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(finalNode)
       .withEdges(invalidEdge)
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     
     List<ConstraintViolation<?>> violations = diagram.validate();
@@ -137,7 +137,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(initialNode, action, decisionNodeWithNoIncomingEdge, decisionNodeWithTwoIncomingEdges)
       .withEdges(edge1, edge2, edge3, edge4, edge5)
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     
     List<ConstraintViolation<?>> violations = diagram.validate();
@@ -171,7 +171,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(initialNode, action, decisionNodeWithNoOutgoingEdge)
       .withEdges(edge1, edge2)
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     
     List<ConstraintViolation<?>> violations = diagram.validate();
@@ -192,7 +192,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(action, mergeNodeWithNoIncomingEdge)
       .withEdges(edge1)
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     
     List<ConstraintViolation<?>> violations = diagram.validate();
@@ -219,7 +219,7 @@ class ConstraintTest {
     Diagram diagram = Diagram.builder()
       .withNodes(action, mergeNodeWithNoOutgoingEdge, mergeNodeWithTwoOutgoingEdges)
       .withEdges(edge1, edge2, edge3, edge4)
-      .withConstraints(new ActivityConstraints())
+      .withConstraints(new ActivityDiagramConstraints())
       .build();
     
     List<ConstraintViolation<?>> violations = diagram.validate();
