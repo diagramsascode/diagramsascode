@@ -1,12 +1,18 @@
 package org.diagramsascode.image;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.List;
+
 import org.diagramsascode.activity.constraint.ActivityDiagramConstraints;
+import org.diagramsascode.activity.constraint.FinalNodeHasNoOutgoingEdges;
 import org.diagramsascode.activity.edge.ControlFlow;
 import org.diagramsascode.activity.node.Action;
 import org.diagramsascode.activity.node.FinalNode;
 import org.diagramsascode.activity.node.InitialNode;
+import org.diagramsascode.core.Constraint;
+import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.Diagram;
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +46,14 @@ class InvalidImageTest {
     
     // Create the source text for PlantUML. This fails with an exception,
     // because the diagram is invalid
-    assertThrows(ConstraintViolationException.class, () ->ImageSource.ofActivityDiagram(invalidDiagram));
+    ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () ->ImageSource.ofActivityDiagram(invalidDiagram));
+    
+    // Assert that one  constraint has been violated.
+    List<ConstraintViolation<?>> violations = exception.getConstraintViolations();
+    assertEquals(1, violations.size());
+    
+    // Assert that the correct  constraint has been violated.
+    Constraint<?> constraint = violations.get(0).getConstraint();
+    assertEquals(FinalNodeHasNoOutgoingEdges.class, constraint.getClass());
   }
 }
