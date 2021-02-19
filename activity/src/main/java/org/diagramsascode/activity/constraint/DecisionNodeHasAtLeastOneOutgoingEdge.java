@@ -24,7 +24,7 @@ public class DecisionNodeHasAtLeastOneOutgoingEdge implements DiagramNodeConstra
     if (node instanceof DecisionNode) {
       List<DiagramEdge> outgoingEdges = diagram.getOutgoingEdgesOf(node);
       if (outgoingEdges.isEmpty()) {
-        constraintViolation = new ConstraintViolation<>(this, node, "");
+        constraintViolation = new ConstraintViolation<>(this, node, "Decision node with id " + node.getId() + " should have at least one outgoing edge, but has none");
       }
     }
 
