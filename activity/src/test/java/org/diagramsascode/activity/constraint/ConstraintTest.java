@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 class ConstraintTest {
   @Test
   void diagramContainsOnlyActivityNodes() {
-    TestNode foreignNode = new TestNode("InvalidNode");
+    TestNode foreignNode = new TestNode("ForeignNode");
 
     Diagram diagram = Diagram.builder()
       .withNodes(foreignNode)
@@ -42,7 +42,7 @@ class ConstraintTest {
   void diagramContainsOnlyActivityEdges() {
     Action fromNode = new Action("From");
     Action toNode = new Action("To");
-    TestEdge foreignEdge = new TestEdge(fromNode, toNode);
+    TestEdge foreignEdge = new TestEdge(fromNode, toNode, "ForeignEdge");
 
     Diagram diagram = Diagram.builder()
       .withNodes(fromNode, toNode)
@@ -55,6 +55,9 @@ class ConstraintTest {
     
     assertEquals(OnlyActivityEdgesOnDiagram.class, violation.getConstraint().getClass());
     assertEquals(foreignEdge, violation.getDiagramElement());
+    
+    String message = violation.getMessage();
+    assertTrue(message.contains(foreignEdge.getText()));
   }
   
   @Test
@@ -230,8 +233,8 @@ class ConstraintTest {
   }
   
   private static class TestEdge extends DiagramEdge{
-    public TestEdge(DiagramNode from, DiagramNode to) {
-      super(from, to, "");
+    public TestEdge(DiagramNode from, DiagramNode to, String text) {
+      super(from, to, text);
     }
   }
 }

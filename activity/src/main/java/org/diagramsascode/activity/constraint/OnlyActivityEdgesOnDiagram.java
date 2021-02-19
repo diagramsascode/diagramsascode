@@ -14,7 +14,7 @@ public class OnlyActivityEdgesOnDiagram implements DiagramEdgeConstraint {
     ConstraintViolation<DiagramEdge> constraintViolation = null;
 
     if (!(edge instanceof ActivityEdge)) {
-      constraintViolation = new ConstraintViolation<>(this, edge, "");
+      constraintViolation = new ConstraintViolation<>(this, edge, "Edge " + edge.getText() + " isn't valid on activity diagrams");
     }
 
     return Optional.ofNullable(constraintViolation);

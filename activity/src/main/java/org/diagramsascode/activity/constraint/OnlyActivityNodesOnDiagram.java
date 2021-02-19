@@ -14,7 +14,7 @@ public class OnlyActivityNodesOnDiagram implements DiagramNodeConstraint {
     ConstraintViolation<DiagramNode> constraintViolation = null;
 
     if (!(node instanceof ActivityNode)) {
-      constraintViolation = new ConstraintViolation<>(this, node, "The node " + node.getText() + " isn't valid on activity diagrams");
+      constraintViolation = new ConstraintViolation<>(this, node, "Node " + node.getText() + " isn't valid on activity diagrams");
     }
 
     return Optional.ofNullable(constraintViolation);
