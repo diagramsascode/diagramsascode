@@ -146,7 +146,6 @@ class ConstraintTest {
     
     assertEquals(DecisionNodeHasOneIncomingEdge.class, firstViolation.getConstraint().getClass());
     assertEquals(decisionNodeWithNoIncomingEdge, firstViolation.getDiagramElement());
-    
     String firstMessage = firstViolation.getMessage();
     assertTrue(firstMessage.contains(decisionNodeWithNoIncomingEdge.getId()));
     assertTrue(firstMessage.contains("0"));
@@ -230,10 +229,17 @@ class ConstraintTest {
     assertEquals(MergeNodeHasOneOutgoingEdge.class, firstViolation.getConstraint().getClass());
     assertEquals(mergeNodeWithNoOutgoingEdge, firstViolation.getDiagramElement());
     
+    String firstMessage = firstViolation.getMessage();
+    assertTrue(firstMessage.contains(mergeNodeWithNoOutgoingEdge.getId()));
+    assertTrue(firstMessage.contains("0"));
+    
     ConstraintViolation<?> secondViolation = violations.get(1);
     
     assertEquals(MergeNodeHasOneOutgoingEdge.class, secondViolation.getConstraint().getClass());
     assertEquals(mergeNodeWithTwoOutgoingEdges, secondViolation.getDiagramElement());
+    String secondMessage = secondViolation.getMessage();
+    assertTrue(secondMessage.contains(mergeNodeWithTwoOutgoingEdges.getId()));
+    assertTrue(secondMessage.contains("2"));
   }
   
   private static class TestNode extends DiagramNode{

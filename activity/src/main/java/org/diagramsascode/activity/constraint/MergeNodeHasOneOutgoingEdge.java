@@ -24,7 +24,7 @@ public class MergeNodeHasOneOutgoingEdge implements DiagramNodeConstraint{
     if (node instanceof MergeNode) {
       List<DiagramEdge> outgoingEdges = diagram.getOutgoingEdgesOf(node);
       if (outgoingEdges.size() != 1) {
-        constraintViolation = new ConstraintViolation<>(this, node, "");
+        constraintViolation = new ConstraintViolation<>(this, node, "Merge node with id " + node.getId() + " should have 1 outgoing edge, but has " + outgoingEdges.size());
       }
     }
 
