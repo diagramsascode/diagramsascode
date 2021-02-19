@@ -48,7 +48,6 @@ class InvalidImageTest {
     // Create the source text for PlantUML. This fails with an exception,
     // because the diagram is invalid
     ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () ->ImageSource.ofActivityDiagram(invalidDiagram));
-    System.out.println(exception);
     
     // Assert that one  constraint has been violated.
     List<ConstraintViolation<?>> violations = exception.getConstraintViolations();
