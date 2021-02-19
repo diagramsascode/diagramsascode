@@ -16,10 +16,4 @@ public class ControlFlow extends ActivityEdge {
   private static String createGuard(String condition) {
     return "[" + Objects.requireNonNull(condition, "condition must be non-null") + "]";
   }
-
-  @Override
-  public String toString() {
-    return "ControlFlow [from=" + getFrom() + ", to=" + getTo() + ", guard=" + getText()
-        + "]";
-  }
 }
