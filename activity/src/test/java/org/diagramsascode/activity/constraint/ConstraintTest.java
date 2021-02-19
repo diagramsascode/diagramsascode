@@ -75,6 +75,9 @@ class ConstraintTest {
     
     assertEquals(ActionHasName.class, violation.getConstraint().getClass());
     assertEquals(action, violation.getDiagramElement());
+    
+    String message = violation.getMessage();
+    assertTrue(message.contains(action.getId()));
   }
 
   @Test
