@@ -66,7 +66,7 @@ public abstract class DiagramEdge implements DiagramElement{
   
   @Override
   public String toString() {
-    return getClass().getSimpleName() + " [from=" + getFrom() + ", to=" + getTo() + ", guard=" + getText()
-        + "]";
+    String guard = getText().isEmpty()? "" : ", guard=" + getText();
+    return getClass().getSimpleName() + " [from=" + getFrom() + ", to=" + getTo() + guard + "]";
   }
 }

@@ -2,6 +2,7 @@ package org.diagramsascode.image;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -47,6 +48,7 @@ class InvalidImageTest {
     // Create the source text for PlantUML. This fails with an exception,
     // because the diagram is invalid
     ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () ->ImageSource.ofActivityDiagram(invalidDiagram));
+    System.out.println(exception);
     
     // Assert that one  constraint has been violated.
     List<ConstraintViolation<?>> violations = exception.getConstraintViolations();
@@ -55,5 +57,9 @@ class InvalidImageTest {
     // Assert that the correct  constraint has been violated.
     Constraint<?> constraint = violations.get(0).getConstraint();
     assertEquals(FinalNodeHasNoOutgoingEdges.class, constraint.getClass());
+    
+    // Assert that exception message contains constraint name
+    String violatedConstraintName = FinalNodeHasNoOutgoingEdges.class.getSimpleName();
+    assertTrue(exception.toString().contains(violatedConstraintName));
   }
 }

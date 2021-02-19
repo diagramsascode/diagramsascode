@@ -1,6 +1,7 @@
 package org.diagramsascode.image;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.DiagramElement;
@@ -16,5 +17,14 @@ public class ConstraintViolationException extends RuntimeException{
   
   public List<ConstraintViolation<? extends DiagramElement>> getConstraintViolations() {
     return constraintViolations;
+  }
+  
+  @Override
+  public String toString() {
+    String constraintViolationsString = constraintViolations.stream()
+      .map(ConstraintViolation::toString)
+      .collect(Collectors.joining("\n"));
+        
+    return constraintViolationsString;
   }
 }

@@ -24,4 +24,9 @@ public class ConstraintViolation<T extends DiagramElement> {
   public String getMessage() {
     return message;
   }
+  
+  @Override
+  public String toString() {
+    return constraint.getClass().getSimpleName() + " [element=" + diagramElement + ", message=" + message + "]";
+  }
 }
