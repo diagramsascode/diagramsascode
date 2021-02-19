@@ -1,0 +1,10 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'diagrams as code - activity',
+                   'Implementation-Version': archiveVersion
+	}
+}
+
+dependencies {
+	implementation project(":core")
+}

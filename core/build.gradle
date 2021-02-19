@@ -1,0 +1,6 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'diagrams as code - core',
+                   'Implementation-Version': archiveVersion
+	}
+}
