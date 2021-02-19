@@ -18,7 +18,7 @@ class ConstraintValidator {
     return new ConstraintValidator(diagram);
   }
   
-  public List<ConstraintViolation<?>> validate() {
+  public List<ConstraintViolation<? extends DiagramElement>> validate() {
     DiagramConstraints diagramConstraints = diagram.getConstraints();
 
     Collection<DiagramNodeConstraint> coreAndDiagramSpecificNodeConstraints = coreAndDiagramSpecificNodeConstraints(
@@ -27,7 +27,7 @@ class ConstraintValidator {
     Collection<DiagramEdgeConstraint> coreAndDiagramSpecificEdgeConstraints = coreAndDiagramSpecificEdgeConstraints(
         diagramConstraints);
     
-    List<ConstraintViolation<?>> violations = new ArrayList<>();
+    List<ConstraintViolation<? extends DiagramElement>> violations = new ArrayList<>();
     addNodeConstraintViolations(coreAndDiagramSpecificNodeConstraints, violations);
     addEdgeConstraintViolations(coreAndDiagramSpecificEdgeConstraints, violations);
     return violations;
@@ -53,7 +53,7 @@ class ConstraintValidator {
     return allConstraints;
   }
 
-  private void addNodeConstraintViolations(Collection<DiagramNodeConstraint> nodeConstraints, List<ConstraintViolation<?>> violations) {
+  private void addNodeConstraintViolations(Collection<DiagramNodeConstraint> nodeConstraints, List<ConstraintViolation<? extends DiagramElement>> violations) {
     diagram.getNodes().forEach(node -> {
       nodeConstraints.stream()
         .flatMap(constraint -> constraint.validate(node).stream())
@@ -61,7 +61,7 @@ class ConstraintValidator {
     });
   }
   
-  private void addEdgeConstraintViolations(Collection<DiagramEdgeConstraint> edgeConstraints, List<ConstraintViolation<?>> violations) {
+  private void addEdgeConstraintViolations(Collection<DiagramEdgeConstraint> edgeConstraints, List<ConstraintViolation<? extends DiagramElement>> violations) {
     diagram.getEdges().forEach(edge -> {
       edgeConstraints.stream()
         .flatMap(constraint -> constraint.validate(edge).stream())

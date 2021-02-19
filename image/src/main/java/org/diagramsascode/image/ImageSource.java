@@ -1,8 +1,11 @@
 package org.diagramsascode.image;
 
+import java.util.List;
 import java.util.Objects;
 
+import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.Diagram;
+import org.diagramsascode.core.DiagramElement;
 import org.diagramsascode.image.activity.ActivityDiagramToSource;
 
 public class ImageSource {
@@ -12,6 +15,14 @@ public class ImageSource {
   private ImageSource(Diagram diagram, DiagramToSource diagramToSource) {
     this.diagram = Objects.requireNonNull(diagram, "diagram must be non-null");
     this.diagramToSource = Objects.requireNonNull(diagramToSource, "diagramToSource must be non-null");
+    throwExceptionIfDiagramIsInvalid(diagram);
+  }
+
+  private void throwExceptionIfDiagramIsInvalid(Diagram diagram) {
+    List<ConstraintViolation<? extends DiagramElement>> constraintViolations = diagram.validate();
+    if(!constraintViolations.isEmpty()) {
+      throw new ConstraintViolationException(constraintViolations);
+    }
   }
   
   public static ImageSource ofActivityDiagram(Diagram diagram) {
@@ -23,7 +34,7 @@ public class ImageSource {
   }
 
   @Override
-  public String toString() {
+  public String toString() {    
     StringBuilder builder = new StringBuilder();
     
     appendHeader(builder);

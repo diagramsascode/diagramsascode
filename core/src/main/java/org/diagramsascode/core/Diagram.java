@@ -18,9 +18,9 @@ public class Diagram{
     this.constraints = Objects.requireNonNull(constraints, "constraints must be non-null");    
   }
 
-  public List<ConstraintViolation<?>> validate() {
+  public List<ConstraintViolation<? extends DiagramElement>> validate() {
     ConstraintValidator validator = ConstraintValidator.of(this);
-    List<ConstraintViolation<?>> violations = validator.validate();
+    List<ConstraintViolation<? extends DiagramElement>> violations = validator.validate();
     return violations;
   }
 
