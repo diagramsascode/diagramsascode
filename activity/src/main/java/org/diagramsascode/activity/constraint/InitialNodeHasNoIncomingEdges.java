@@ -24,7 +24,7 @@ public class InitialNodeHasNoIncomingEdges implements DiagramNodeConstraint {
     if (node instanceof InitialNode) {
       List<DiagramEdge> incomingEdges = diagram.getIncomingEdgesOf(node);
       if (!incomingEdges.isEmpty()) {
-        constraintViolation = new ConstraintViolation<>(this, node, "");
+        constraintViolation = new ConstraintViolation<>(this, node, "Initial node must not have incoming edges");
       }
     }
 

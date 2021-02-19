@@ -24,7 +24,7 @@ public class FinalNodeHasNoOutgoingEdges implements DiagramNodeConstraint {
     if (node instanceof FinalNode) {
       List<DiagramEdge> outgoingEdges = diagram.getOutgoingEdgesOf(node);
       if (!outgoingEdges.isEmpty()) {
-        constraintViolation = new ConstraintViolation<>(this, node, "");
+        constraintViolation = new ConstraintViolation<>(this, node, "Final node must not have outgoing edges");
       }
     }
 
