@@ -1,6 +1,7 @@
 package org.diagramsascode.activity.constraint;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import org.junit.jupiter.api.Test;
 class ConstraintTest {
   @Test
   void diagramContainsOnlyActivityNodes() {
-    TestNode foreignNode = new TestNode();
+    TestNode foreignNode = new TestNode("InvalidNode");
 
     Diagram diagram = Diagram.builder()
       .withNodes(foreignNode)
@@ -32,6 +33,9 @@ class ConstraintTest {
     
     assertEquals(OnlyActivityNodesOnDiagram.class, violation.getConstraint().getClass());
     assertEquals(foreignNode, violation.getDiagramElement());
+    
+    String message = violation.getMessage();
+    assertTrue(message.contains(foreignNode.getText()));
   }
   
   @Test
@@ -220,8 +224,8 @@ class ConstraintTest {
   }
   
   private static class TestNode extends DiagramNode{
-    public TestNode() {
-      super("");
+    public TestNode(String text) {
+      super(text);
     }
   }
   
