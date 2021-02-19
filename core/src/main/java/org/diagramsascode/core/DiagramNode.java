@@ -29,6 +29,6 @@ public abstract class DiagramNode implements DiagramElement{
   
   @Override
   public String toString() {
-    return getText();
+    return getClass().getSimpleName() + " [text=" + getText() + "]";
   }
 }

@@ -10,9 +10,4 @@ public abstract class ActivityNode extends DiagramNode {
   public ActivityNode(String text) {
     super(text);
   }
-  
-  @Override
-  public String toString() {
-    return getClass().getSimpleName();
-  }
 }
