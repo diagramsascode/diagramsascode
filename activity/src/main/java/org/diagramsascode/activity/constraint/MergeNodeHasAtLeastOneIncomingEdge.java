@@ -24,7 +24,7 @@ public class MergeNodeHasAtLeastOneIncomingEdge implements DiagramNodeConstraint
     if (node instanceof MergeNode) {
       List<DiagramEdge> incomingEdges = diagram.getIncomingEdgesOf(node);
       if (incomingEdges.isEmpty()) {
-        constraintViolation = new ConstraintViolation<>(this, node, "");
+        constraintViolation = new ConstraintViolation<>(this, node, "Merge node with id " + node.getId() + " should have at least one incoming edge, but has none");
       }
     }
 
