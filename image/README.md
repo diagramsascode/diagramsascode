@@ -9,17 +9,13 @@ The following activity diagram has been generated from source code:
 
 ![Diagram of an activity diagram](sample_activity_diagram.png)
 
-The full black circle is called *initial node*. It starts the flow.
-
-The black circle with the white circle around it is called *final node*. It ends the flow.
+The full black circle is called *initial node*. It starts the flow. The black circle with the white circle around it is called *final node*. It ends the flow.
 
 The *actions* Action1, Action2a, Action2b and Action3 are the steps of the flow.
 
 The white diamonds are called *decision node* and *merge node*. They split and merge the flow.
 
-The edges between the nodes are called *control flow*. They define the order of steps.
-
-The outgoing edges of a decision node define the *guard condition* that decides which branch to follow.
+The edges between the nodes are called *control flow*. They define the order of steps. The outgoing edges of a decision node define the *guard condition* that decides which branch to follow.
 
 Here's how to build that diagram with code:
 
