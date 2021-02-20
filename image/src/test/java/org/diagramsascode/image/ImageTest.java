@@ -13,19 +13,11 @@ import org.diagramsascode.activity.node.FinalNode;
 import org.diagramsascode.activity.node.InitialNode;
 import org.diagramsascode.activity.node.MergeNode;
 import org.diagramsascode.core.Diagram;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ImageTest {
-  private File outputFile;
-
-  @BeforeEach
-  void setup() throws IOException {
-    outputFile = File.createTempFile("activity", ".png");
-  }
-
   @Test
-  void writesDiagramImageToFile() {
+  void writesDiagramImageToFile() throws IOException {
     // Create the initial and final node (to define where the flow starts and stop)
     final InitialNode initialNode = new InitialNode();
     final FinalNode finalNode = new FinalNode();
@@ -64,9 +56,10 @@ class ImageTest {
     
     // Create the image of the diagram and write it to a PNG file.
     Image image = Image.fromSource(source);
+    File outputFile = File.createTempFile("activity", ".png");
     image.writeToPngFile(outputFile);
     
-    assertTrue(outputFile.exists());
     System.out.println("Diagram written to: " + outputFile);
+    assertTrue(outputFile.exists());
   }
 }
