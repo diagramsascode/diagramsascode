@@ -56,7 +56,9 @@ class ConstraintValidator {
   private void addNodeConstraintViolations(Collection<DiagramNodeConstraint> nodeConstraints, List<ConstraintViolation<? extends DiagramElement>> violations) {
     diagram.getNodes().forEach(node -> {
       nodeConstraints.stream()
-        .flatMap(constraint -> constraint.validate(node).stream())
+        .map(constraint -> constraint.validate(node))
+        .filter(optinalViolation -> optinalViolation.isPresent())
+        .map(optinalViolation -> optinalViolation.get())
         .forEach(violation -> violations.add(violation));
     });
   }
@@ -64,7 +66,9 @@ class ConstraintValidator {
   private void addEdgeConstraintViolations(Collection<DiagramEdgeConstraint> edgeConstraints, List<ConstraintViolation<? extends DiagramElement>> violations) {
     diagram.getEdges().forEach(edge -> {
       edgeConstraints.stream()
-        .flatMap(constraint -> constraint.validate(edge).stream())
+        .map(constraint -> constraint.validate(edge))
+        .filter(optinalViolation -> optinalViolation.isPresent())
+        .map(optinalViolation -> optinalViolation.get())
         .forEach(violation -> violations.add(violation));
     });
   }

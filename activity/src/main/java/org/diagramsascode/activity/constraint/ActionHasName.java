@@ -12,7 +12,7 @@ public class ActionHasName implements DiagramNodeConstraint {
   public Optional<ConstraintViolation<DiagramNode>> validate(DiagramNode node) {
     ConstraintViolation<DiagramNode> constraintViolation = null;
 
-    if (node instanceof Action && node.getText().isBlank()) {
+    if (node instanceof Action && node.getText().trim().isEmpty()) {
       constraintViolation = new ConstraintViolation<DiagramNode>(this, node,
           "Action with id " + node.getId() + " should hava a name");
     }
