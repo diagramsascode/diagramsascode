@@ -7,7 +7,7 @@ Generate valid diagram images from source code.
 ## How to build a diagram
 The following activity diagram has been generated from source code:
 
-![Diagram of an activity diagram](sample_activity_diagram.png)
+![Diagram of an activity diagram](docs/sample_activity_diagram.png)
 
 The full black circle is called *initial node*. It starts the flow. The black circle with the white circle around it is called *final node*. It ends the flow.
 
