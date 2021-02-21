@@ -47,10 +47,36 @@ class DiagramTest {
       .build();
 
     Collection<DiagramNode> actualNodes = diagram.getNodes();
+    assertEquals(1, actualNodes.size());
     DiagramNode actualNode = actualNodes.iterator().next();
     assertEquals(action.getText(), actualNode.getText());
  
     Collection<DiagramEdge> actualEdges = diagram.getEdges();
+    assertEquals(1, actualEdges.size());
+    DiagramEdge actualEdge = actualEdges.iterator().next();
+    assertEquals(controlFlow.getText(), actualEdge.getText());
+    assertEquals(controlFlow.getFrom(), actualEdge.getFrom());
+    assertEquals(controlFlow.getTo(), actualEdge.getTo());
+  }
+  
+  @Test
+  void buildsDiagramWithDuplicateNodeWhichIsIgnored() {
+    final Action action = new Action("Action");
+    final ControlFlow controlFlow = new ControlFlow(action, action);
+    
+    Diagram diagram = Diagram.builder()
+      .withNodes(action, action)
+      .withEdges(controlFlow)
+      .withConstraints(new ActivityDiagramConstraints())
+      .build();
+
+    Collection<DiagramNode> actualNodes = diagram.getNodes();
+    assertEquals(1, actualNodes.size());
+    DiagramNode actualNode = actualNodes.iterator().next();
+    assertEquals(action.getText(), actualNode.getText());
+ 
+    Collection<DiagramEdge> actualEdges = diagram.getEdges();
+    assertEquals(1, actualEdges.size());
     DiagramEdge actualEdge = actualEdges.iterator().next();
     assertEquals(controlFlow.getText(), actualEdge.getText());
     assertEquals(controlFlow.getFrom(), actualEdge.getFrom());
@@ -82,11 +108,13 @@ class DiagramTest {
       .build();
 
     Collection<DiagramNode> actualNodes = diagram.getNodes();
+    assertEquals(6, actualNodes.size());
     Collection<DiagramNode> expectedNodes = Arrays.asList(initialNode, action1, decision, merge, action2, finalNode);
     assertTrue(actualNodes.containsAll(expectedNodes));
  
     Collection<DiagramEdge> actualEdges = diagram.getEdges();
-    Collection<DiagramEdge> expectedEdges = Arrays.asList(edge1, edge1, edge2, edge31, edge32, edge4, edge5);
+    assertEquals(6, actualEdges.size());
+    Collection<DiagramEdge> expectedEdges = Arrays.asList(edge1, edge2, edge31, edge32, edge4, edge5);
     assertTrue(actualEdges.containsAll(expectedEdges));
     
     assertEquals(constraints, diagram.getConstraints());

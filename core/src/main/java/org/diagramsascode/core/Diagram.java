@@ -3,8 +3,10 @@ package org.diagramsascode.core;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -15,11 +17,11 @@ import java.util.stream.Collectors;
  *
  */
 public class Diagram{
-  private final List<DiagramNode> nodes;
+  private final Set<DiagramNode> nodes;
   private final List<DiagramEdge> edges;
   private final DiagramConstraints constraints;
   
-  private Diagram(List<DiagramNode> nodes, List<DiagramEdge> edges, DiagramConstraints constraints) {
+  private Diagram(Set<DiagramNode> nodes, List<DiagramEdge> edges, DiagramConstraints constraints) {
     this.nodes = Objects.requireNonNull(nodes, "nodes must be non-null");
     this.edges = Objects.requireNonNull(edges, "edges must be non-null");
     this.constraints = Objects.requireNonNull(constraints, "constraints must be non-null");    
@@ -52,7 +54,7 @@ public class Diagram{
    * 
    * @return the nodes
    */
-  public Collection<DiagramNode> getNodes() {
+  public Set<DiagramNode> getNodes() {
     return nodes;
   }
 
@@ -107,7 +109,7 @@ public class Diagram{
   }
 
   public static class DiagramBuilder {
-    private List<DiagramNode> nodes;
+    private Set<DiagramNode> nodes;
     private List<DiagramEdge> edges;
     private DiagramConstraints constraints;
     
@@ -115,20 +117,31 @@ public class Diagram{
     }
     
     /**
-     * Specifies the nodes of this diagram.
+     * Specifies the nodes of this diagram, comma separated (varargs).
      * 
      * @param nodes the nodes to be shown on the diagram
      * 
      * @return a builder to continue building the diagram
      */
     public NodeBuilder withNodes(DiagramNode... nodes) {
-      List<DiagramNode> nodeList = Arrays.asList(nodes);
-      return new NodeBuilder(nodeList);
+      Set<DiagramNode> nodeSet = new HashSet<>(Arrays.asList(nodes));
+      return withNodes(nodeSet);
+    }
+    
+    /**
+     * Specifies the nodes of this diagram, as a set.
+     * 
+     * @param nodes the nodes to be shown on the diagram
+     * 
+     * @return a builder to continue building the diagram
+     */
+    public NodeBuilder withNodes(Set<DiagramNode> nodes) {
+      return new NodeBuilder(nodes);
     }
     
     public class NodeBuilder{
-      private NodeBuilder(List<DiagramNode> nodeList) {
-        DiagramBuilder.this.nodes = new ArrayList<>(nodeList);
+      private NodeBuilder(Set<DiagramNode> nodes) {
+        DiagramBuilder.this.nodes = nodes;
       }
       
       /**
