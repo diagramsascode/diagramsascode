@@ -17,7 +17,7 @@ The white diamonds are called *decision node* and *merge node*. They split and m
 
 The edges between the nodes are called *control flow*. They define the order of steps. The outgoing edges of a decision node define the *guard condition* that decides which branch to follow.
 
-Here's how to build that diagram with code:
+Here's how to build that diagram (full code [here](https://github.com/diagramsascode/diagramsascode/blob/main/image/src/test/java/org/diagramsascode/image/ImageTest.java)):
 
 ``` java
 // Create the initial and final node (to define where the flow starts and stop)
