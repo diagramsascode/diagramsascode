@@ -7,6 +7,13 @@ import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.DiagramNode;
 import org.diagramsascode.core.DiagramNodeConstraint;
 
+/**
+ * Constraint that ensures only nodes of types that are valid on activity diagrams
+ * are actually shown on it.
+ * 
+ * @author b_muth
+ *
+ */
 public class OnlyActivityNodesOnDiagram implements DiagramNodeConstraint {
 
   @Override

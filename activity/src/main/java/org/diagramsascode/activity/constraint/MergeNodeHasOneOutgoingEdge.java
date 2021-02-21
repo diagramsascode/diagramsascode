@@ -10,9 +10,20 @@ import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramNode;
 import org.diagramsascode.core.DiagramNodeConstraint;
 
+/**
+ * Constraint that ensures that each merge node has exactly one outgoing edge.
+ * 
+ * @author b_muth
+ *
+ */
 public class MergeNodeHasOneOutgoingEdge implements DiagramNodeConstraint{
   private final Diagram diagram;
 
+  /**
+   * Creates the constraint for the specified diagram
+   * 
+   * @param diagram the diagram whose elements are constrained by this constraint
+   */
   public MergeNodeHasOneOutgoingEdge(Diagram diagram) {
     this.diagram = diagram;
   }

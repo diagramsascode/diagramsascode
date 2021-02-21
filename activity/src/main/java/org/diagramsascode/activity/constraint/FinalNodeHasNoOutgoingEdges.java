@@ -10,9 +10,20 @@ import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramNode;
 import org.diagramsascode.core.DiagramNodeConstraint;
 
+/**
+ * Constraint that ensures that a final node has no outgoing edges
+ * 
+ * @author b_muth
+ *
+ */
 public class FinalNodeHasNoOutgoingEdges implements DiagramNodeConstraint {
   private final Diagram diagram;
 
+  /**
+   * Creates the constraint for the specified diagram
+   * 
+   * @param diagram the diagram whose elements are constrained by this constraint
+   */
   public FinalNodeHasNoOutgoingEdges(Diagram diagram) {
     this.diagram = diagram;
   }

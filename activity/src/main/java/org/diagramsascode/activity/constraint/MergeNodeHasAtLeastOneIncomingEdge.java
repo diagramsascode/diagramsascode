@@ -10,9 +10,20 @@ import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramNode;
 import org.diagramsascode.core.DiagramNodeConstraint;
 
+/**
+ * Constraint that ensures that each merge node has at least one incoming edge.
+ * 
+ * @author b_muth
+ *
+ */
 public class MergeNodeHasAtLeastOneIncomingEdge implements DiagramNodeConstraint{
   private final Diagram diagram;
 
+  /**
+   * Creates the constraint for the specified diagram
+   * 
+   * @param diagram the diagram whose elements are constrained by this constraint
+   */
   public MergeNodeHasAtLeastOneIncomingEdge(Diagram diagram) {
     this.diagram = diagram;
   }

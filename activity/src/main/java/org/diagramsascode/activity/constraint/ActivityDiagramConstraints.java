@@ -8,6 +8,12 @@ import org.diagramsascode.core.Diagram;
 import org.diagramsascode.core.DiagramEdgeConstraint;
 import org.diagramsascode.core.DiagramNodeConstraint;
 
+/**
+ * Collects all constraints that are relevant for an activity diagram.
+ * 
+ * @author b_muth
+ *
+ */
 public class ActivityDiagramConstraints implements DiagramConstraints {
 
   @Override

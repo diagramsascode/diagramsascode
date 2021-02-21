@@ -7,6 +7,13 @@ import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramEdgeConstraint;
 
+/**
+ * Constraint that ensures only edges of types that are valid on activity diagrams
+ * are actually shown on it.
+ * 
+ * @author b_muth
+ *
+ */
 public class OnlyActivityEdgesOnDiagram implements DiagramEdgeConstraint {
 
   @Override

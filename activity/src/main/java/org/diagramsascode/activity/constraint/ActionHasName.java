@@ -7,6 +7,12 @@ import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.DiagramNode;
 import org.diagramsascode.core.DiagramNodeConstraint;
 
+/**
+ * Constraint that ensures that each action has a name (instead of an empty string).
+ * 
+ * @author b_muth
+ *
+ */
 public class ActionHasName implements DiagramNodeConstraint {
   @Override
   public Optional<ConstraintViolation<DiagramNode>> validate(DiagramNode node) {
