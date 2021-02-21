@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Set;
 
 import org.diagramsascode.activity.constraint.ActivityDiagramConstraints;
 import org.diagramsascode.activity.edge.ControlFlow;
@@ -13,8 +14,8 @@ import org.diagramsascode.activity.node.DecisionNode;
 import org.diagramsascode.activity.node.FinalNode;
 import org.diagramsascode.activity.node.InitialNode;
 import org.diagramsascode.activity.node.MergeNode;
-import org.diagramsascode.core.DiagramConstraints;
 import org.diagramsascode.core.Diagram;
+import org.diagramsascode.core.DiagramConstraints;
 import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramNode;
 import org.junit.jupiter.api.Test;
@@ -70,12 +71,36 @@ class DiagramTest {
       .withConstraints(new ActivityDiagramConstraints())
       .build();
 
-    Collection<DiagramNode> actualNodes = diagram.getNodes();
+    Set<DiagramNode> actualNodes = diagram.getNodes();
     assertEquals(1, actualNodes.size());
     DiagramNode actualNode = actualNodes.iterator().next();
     assertEquals(action.getText(), actualNode.getText());
  
-    Collection<DiagramEdge> actualEdges = diagram.getEdges();
+    Set<DiagramEdge> actualEdges = diagram.getEdges();
+    assertEquals(1, actualEdges.size());
+    DiagramEdge actualEdge = actualEdges.iterator().next();
+    assertEquals(controlFlow.getText(), actualEdge.getText());
+    assertEquals(controlFlow.getFrom(), actualEdge.getFrom());
+    assertEquals(controlFlow.getTo(), actualEdge.getTo());
+  }
+  
+  @Test
+  void buildsDiagramWithDuplicateEdgeWhichIsIgnored() {
+    final Action action = new Action("Action");
+    final ControlFlow controlFlow = new ControlFlow(action, action);
+    
+    Diagram diagram = Diagram.builder()
+      .withNodes(action)
+      .withEdges(controlFlow, controlFlow)
+      .withConstraints(new ActivityDiagramConstraints())
+      .build();
+
+    Set<DiagramNode> actualNodes = diagram.getNodes();
+    assertEquals(1, actualNodes.size());
+    DiagramNode actualNode = actualNodes.iterator().next();
+    assertEquals(action.getText(), actualNode.getText());
+ 
+    Set<DiagramEdge> actualEdges = diagram.getEdges();
     assertEquals(1, actualEdges.size());
     DiagramEdge actualEdge = actualEdges.iterator().next();
     assertEquals(controlFlow.getText(), actualEdge.getText());

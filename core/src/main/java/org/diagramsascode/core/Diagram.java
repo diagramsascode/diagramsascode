@@ -1,8 +1,6 @@
 package org.diagramsascode.core;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -18,10 +16,10 @@ import java.util.stream.Collectors;
  */
 public class Diagram{
   private final Set<DiagramNode> nodes;
-  private final List<DiagramEdge> edges;
+  private final Set<DiagramEdge> edges;
   private final DiagramConstraints constraints;
   
-  private Diagram(Set<DiagramNode> nodes, List<DiagramEdge> edges, DiagramConstraints constraints) {
+  private Diagram(Set<DiagramNode> nodes, Set<DiagramEdge> edges, DiagramConstraints constraints) {
     this.nodes = Objects.requireNonNull(nodes, "nodes must be non-null");
     this.edges = Objects.requireNonNull(edges, "edges must be non-null");
     this.constraints = Objects.requireNonNull(constraints, "constraints must be non-null");    
@@ -63,7 +61,7 @@ public class Diagram{
    * 
    * @return the edges
    */
-  public Collection<DiagramEdge> getEdges() {
+  public Set<DiagramEdge> getEdges() {
     return edges;
   }
   
@@ -110,7 +108,7 @@ public class Diagram{
 
   public static class DiagramBuilder {
     private Set<DiagramNode> nodes;
-    private List<DiagramEdge> edges;
+    private Set<DiagramEdge> edges;
     private DiagramConstraints constraints;
     
     private DiagramBuilder() {
@@ -118,6 +116,7 @@ public class Diagram{
     
     /**
      * Specifies the nodes of this diagram, comma separated (varargs).
+     * Duplicates will be ignored.
      * 
      * @param nodes the nodes to be shown on the diagram
      * 
@@ -145,20 +144,32 @@ public class Diagram{
       }
       
       /**
-       * Specifies the edges of this diagram.
+       * Specifies the edges of this diagram, comma separated (varargs).
+       * Duplicates will be ignored.
        * 
        * @param edges the edges to be shown on the diagram
        * 
        * @return a builder to continue building the diagram
        */
       public EdgeBuilder withEdges(DiagramEdge... edges) {
-        List<DiagramEdge> edgeList = Arrays.asList(edges);
-        return new EdgeBuilder(edgeList);
+        Set<DiagramEdge> edgeSet = new HashSet<>(Arrays.asList(edges));
+        return withEdges(edgeSet);
+      }
+      
+      /**
+       * Specifies the edges of this diagram, as as set.
+       * 
+       * @param edges the edges to be shown on the diagram
+       * 
+       * @return a builder to continue building the diagram
+       */
+      public EdgeBuilder withEdges(Set<DiagramEdge> edges) {
+        return new EdgeBuilder(edges);
       }
       
       public class EdgeBuilder{
-        private EdgeBuilder(List<DiagramEdge> edgeList) {
-          DiagramBuilder.this.edges = new ArrayList<>(edgeList);
+        private EdgeBuilder(Set<DiagramEdge> edges) {
+          DiagramBuilder.this.edges = edges;
         }
 
         /**
