@@ -9,6 +9,13 @@ import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramNode;
 import org.diagramsascode.image.DiagramToSource;
 
+/**
+ * Converts an acitvity diagrams content to a source text
+ * that can be used by PlantUML to generate an activity diagram image.
+ * 
+ * @author b_muth
+ *
+ */
 public class ActivityDiagramToSource implements DiagramToSource {
   static final String DIAGRAM_HEADER = "@startuml\n!pragma graphviz_dot smetana\n" + 
       "skinparam monochrome true\nhide empty description\n";
