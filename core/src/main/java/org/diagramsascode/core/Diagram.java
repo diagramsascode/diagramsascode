@@ -153,8 +153,8 @@ public class Diagram{
          * 
          * They define which diagram elements are valid, and which aren't.
          * 
-         * @param the constraints
-         * @return aa builder to continue building the diagram
+         * @param constraints the constraints
+         * @return builder to continue building the diagram
          */
         public ConstraintsBuilder withConstraints(DiagramConstraints constraints) {
           return new ConstraintsBuilder(constraints);
