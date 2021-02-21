@@ -3,11 +3,21 @@ package org.diagramsascode.image;
 import java.util.List;
 import java.util.Objects;
 
+import org.diagramsascode.activity.constraint.ActivityDiagramConstraints;
 import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.Diagram;
 import org.diagramsascode.core.DiagramElement;
 import org.diagramsascode.image.activity.ActivityDiagramToSource;
 
+/**
+ * Represents the textual source code that contains information how to generate the image.
+ * 
+ * Right now, this is PlantUML text based (https://plantuml.com/).
+ * That might change in the future.
+ * 
+ * @author b_muth
+ *
+ */
 public class ImageSource {
   private final Diagram diagram;
   private final DiagramToSource diagramToSource;
@@ -25,10 +35,27 @@ public class ImageSource {
     }
   }
   
+  /**
+   * Creates the source text for rendering an activity diagram image.
+   * 
+   * It's up to the user to make sure that the diagram passed in 
+   * is actually an activity diagram (by specifying {@link ActivityDiagramConstraints}
+   * when building the {@link Diagram}).
+   * 
+   * @param diagram the activity diagram 
+   * @return the image source text
+   */
   public static ImageSource ofActivityDiagram(Diagram diagram) {
     return of(diagram, new ActivityDiagramToSource());
   }
   
+  /**
+   * Generic constructor, enabling users to customize how the contents of the diagram
+   * are converted to a textual image source.
+   * 
+   * @param diagram the diagram to be converted to text 
+   * @return the converter from the diagram contents to the text
+   */
   public static ImageSource of(Diagram diagram, DiagramToSource diagramToSource) {
     return new ImageSource(diagram, diagramToSource);
   }
