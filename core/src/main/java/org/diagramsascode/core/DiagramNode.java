@@ -3,6 +3,12 @@ package org.diagramsascode.core;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * A node on a diagram. To be subclassed by concrete node types.
+ * 
+ * @author b_muth
+ *
+ */
 public abstract class DiagramNode implements DiagramElement{
   private static final String ID_PREFIX = "NODE";
   private static final AtomicInteger ID_INDEX = new AtomicInteger();
@@ -10,15 +16,22 @@ public abstract class DiagramNode implements DiagramElement{
   private final String id;
   private final String text;
   
+  /**
+   * Creates a new node.
+   * 
+   * @param text the text of the node
+   */
   public DiagramNode(String text) {
     this.id = newId();
     this.text = Objects.requireNonNull(text, "text must be non-null");
   }
   
+  @Override
   public String getId() {
     return id;
   }
   
+  @Override
   public final String getText() {
     return text;
   }

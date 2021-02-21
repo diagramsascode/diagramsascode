@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * An edge connecting two nodes.
+ * An edge connecting two nodes on a diagram. To be subclassed by concrete edge types.
  * 
  * @author b_muth
  *
