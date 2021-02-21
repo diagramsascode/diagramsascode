@@ -1,7 +1,7 @@
 package org.diagramsascode.core;
 
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -123,7 +123,7 @@ public class Diagram{
      * @return a builder to continue building the diagram
      */
     public NodeBuilder withNodes(DiagramNode... nodes) {
-      Set<DiagramNode> nodeSet = new HashSet<>(Arrays.asList(nodes));
+      Set<DiagramNode> nodeSet = new LinkedHashSet<>(Arrays.asList(nodes));
       return withNodes(nodeSet);
     }
     
@@ -152,7 +152,7 @@ public class Diagram{
        * @return a builder to continue building the diagram
        */
       public EdgeBuilder withEdges(DiagramEdge... edges) {
-        Set<DiagramEdge> edgeSet = new HashSet<>(Arrays.asList(edges));
+        Set<DiagramEdge> edgeSet = new LinkedHashSet<>(Arrays.asList(edges));
         return withEdges(edgeSet);
       }
       

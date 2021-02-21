@@ -13,30 +13,30 @@ Here's how to build that diagram (full code [here](https://github.com/diagramsas
 
 ``` java
 // Create the initial and final node (to define where the flow starts and ends)
-final InitialNode initialNode = new InitialNode();
-final FinalNode finalNode = new FinalNode();
+InitialNode initialNode = new InitialNode();
+FinalNode finalNode = new FinalNode();
     
 // Create the decision and merge node (to split the flow and merge it back together)
-final DecisionNode decisionNode = new DecisionNode();
-final MergeNode mergeNode = new MergeNode();
+DecisionNode decisionNode = new DecisionNode();
+MergeNode mergeNode = new MergeNode();
     
 // Create actions (for the flow steps)
-final Action action1 = new Action("Action1");
-final Action action2a = new Action("Action2a");
-final Action action2b = new Action("Action2b");
-final Action action3 = new Action("Action3");
+Action action1 = new Action("Action1");
+Action action2a = new Action("Action2a");
+Action action2b = new Action("Action2b");
+Action action3 = new Action("Action3");
 
 // Connect the nodes with control flow edges.
 // If they originate from a decision node, the third constructor parameter
 // specifies the decision's condition (e.g. "x < 100")
-final ControlFlow edge1 = new ControlFlow(initialNode, action1);
-final ControlFlow edge2 = new ControlFlow(action1, decisionNode);
-final ControlFlow edge3_a = new ControlFlow(decisionNode, action2a, "x < 100");
-final ControlFlow edge3_b = new ControlFlow(decisionNode, action2b, "x >= 100");
-final ControlFlow edge4_a = new ControlFlow(action2a, mergeNode);
-final ControlFlow edge4_b = new ControlFlow(action2b, mergeNode);
-final ControlFlow edge5 = new ControlFlow(mergeNode, action3);
-final ControlFlow edge6 = new ControlFlow(action3, finalNode);
+ControlFlow edge1 = new ControlFlow(initialNode, action1);
+ControlFlow edge2 = new ControlFlow(action1, decisionNode);
+ControlFlow edge3_a = new ControlFlow(decisionNode, action2a, "x < 100");
+ControlFlow edge3_b = new ControlFlow(decisionNode, action2b, "x >= 100");
+ControlFlow edge4_a = new ControlFlow(action2a, mergeNode);
+ControlFlow edge4_b = new ControlFlow(action2b, mergeNode);
+ControlFlow edge5 = new ControlFlow(mergeNode, action3);
+ControlFlow edge6 = new ControlFlow(action3, finalNode);
 
 // Build the diagram
 Diagram diagram = Diagram.builder()
