@@ -10,9 +10,9 @@ public class Action extends ActivityNode{
   /**
    * Creates a new action.
    * 
-   * @param text the text to display inside the rounded rectangle
+   * @param name the name to display inside the rounded rectangle
    */
-  public Action(String text) {
-    super(text);
+  public Action(String name) {
+    super(name);
   }
 }
