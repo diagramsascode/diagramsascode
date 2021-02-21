@@ -4,6 +4,17 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * A constraint that makes sure that always both the starting node and the ending
+ * node of an edge of a diagram are shown on the diagram.
+ * 
+ * This is a constraint that is a core constraint, i.e. it is checked for all
+ * diagrams.
+ * 
+ * @see CoreConstraints
+ * @author b_muth
+ *
+ */
 class NodesOfEdgeAreOnDiagram implements DiagramEdgeConstraint {
   private final Diagram diagram;
 
