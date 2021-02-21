@@ -3,6 +3,12 @@ package org.diagramsascode.core;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * An edge connecting two nodes.
+ * 
+ * @author b_muth
+ *
+ */
 public abstract class DiagramEdge implements DiagramElement{
   private static final String ID_PREFIX = "EDGE";
   private static final AtomicInteger ID_INDEX = new AtomicInteger();
@@ -12,6 +18,13 @@ public abstract class DiagramEdge implements DiagramElement{
   private final DiagramNode from;
   private final DiagramNode to;
 
+  /**
+   * Creates a new edge.
+   * 
+   * @param from the starting node of the edge
+   * @param to the ending node of the edge
+   * @param text the text displayed on the edge
+   */
   public DiagramEdge(DiagramNode from, DiagramNode to, String text) {
     this.id = newId();
     this.from = Objects.requireNonNull(from, "from must be non-null");
@@ -19,18 +32,39 @@ public abstract class DiagramEdge implements DiagramElement{
     this.text = Objects.requireNonNull(text, "text must be non-null");
   }
   
+  /**
+   * Returns the unique identifier of the edge.
+   * 
+   * @return the unique identifier
+   */
   public String getId() {
     return id;
   }
   
+  /**
+   * Returns the starting node of the edge.
+   * 
+   * @return the starting node
+   */
   public DiagramNode getFrom() {
     return from;
   }
 
+  /**
+   * Returns the ending node of the edge.
+   * 
+   * @return the ending node
+   */
   public DiagramNode getTo() {
     return to;
   }
 
+
+  /**
+   * Returns the text displayed on the edge.
+   * 
+   * @return the text
+   */
   public final String getText() {
     return text;
   }
