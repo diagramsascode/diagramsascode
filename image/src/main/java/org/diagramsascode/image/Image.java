@@ -10,6 +10,15 @@ import java.util.Objects;
 import net.sourceforge.plantuml.SourceStringReader;
 import net.sourceforge.plantuml.core.DiagramDescription;
 
+/**
+ * Represents an diagram image to be written to a file or a stream.
+ * 
+ * Note that the binary contents of the image are created lazily, not
+ * until the diagram is really written.
+ * 
+ * @author b_muth
+ *
+ */
 public class Image {
   private final ImageSource imageSource;
 
@@ -17,18 +26,33 @@ public class Image {
     this.imageSource = Objects.requireNonNull(imageSource, "imageSource must be non-null");
   }
   
+  /**
+   * Creates an image from an image source (i.e. a textual representation of a diagram).
+   * 
+   * @param imageSource the image source.
+   */
   public static Image fromSource(ImageSource imageSource) {
     return new Image(imageSource);
   }
-
-  public DiagramDescription writeToPngFile(File outputFile) {
+  
+  /**
+   * Writes a PNG image file to the specified location.
+   * 
+   * @param outputFile the file to write to
+   */
+  public void writeToPngFile(File outputFile) {
     FileOutputStream outputStream = outputStreamFor(outputFile);
-    return writeToPngStream(outputStream);
+    writeToPngStream(outputStream);
   }
 
-  public DiagramDescription writeToPngStream(OutputStream outputStream) {
+  /**
+   * Writes a PNG image file to the specified stream.
+   * 
+   * @param outputStream the stream to write to
+   */
+  public void writeToPngStream(OutputStream outputStream) {
     SourceStringReader reader = readerOf(imageSource);
-    return writeImageToStream(reader, outputStream);
+    writeImageToStream(reader, outputStream);
   }
 
   private SourceStringReader readerOf(ImageSource imageSource) {
