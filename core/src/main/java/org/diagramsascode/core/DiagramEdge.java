@@ -32,11 +32,7 @@ public abstract class DiagramEdge implements DiagramElement{
     this.text = Objects.requireNonNull(text, "text must be non-null");
   }
   
-  /**
-   * Returns the unique identifier of the edge.
-   * 
-   * @return the unique identifier
-   */
+  @Override
   public String getId() {
     return id;
   }
@@ -59,12 +55,7 @@ public abstract class DiagramEdge implements DiagramElement{
     return to;
   }
 
-
-  /**
-   * Returns the text displayed on the edge.
-   * 
-   * @return the text
-   */
+  @Override
   public final String getText() {
     return text;
   }
