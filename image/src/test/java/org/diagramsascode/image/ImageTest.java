@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 class ImageTest {
   @Test
   void writesDiagramImageToFile() throws IOException {
-    // Create the initial and final node (to define where the flow starts and stop)
+    // Create the initial and final node (to define where the flow starts and ends)
     final InitialNode initialNode = new InitialNode();
     final FinalNode finalNode = new FinalNode();
     
@@ -45,14 +45,14 @@ class ImageTest {
     final ControlFlow edge6 = new ControlFlow(action3, finalNode);
     
     // Build the diagram
-    Diagram d = Diagram.builder()
+    Diagram diagram = Diagram.builder()
       .withNodes(initialNode, finalNode, decisionNode, mergeNode, action1, action2a, action2b, action3)
       .withEdges(edge1, edge2, edge3_a, edge3_b, edge4_a, edge4_b, edge5, edge6)
       .withConstraints(new ActivityDiagramConstraints())
       .build();
     
     // Create the source text for PlantUML. You can print it to read it, if you want to.
-    ImageSource source = ImageSource.ofActivityDiagram(d);
+    ImageSource source = ImageSource.ofActivityDiagram(diagram);
     
     // Create the image of the diagram and write it to a PNG file.
     Image image = Image.fromSource(source);
