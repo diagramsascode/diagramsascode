@@ -30,6 +30,7 @@ public class Image {
    * Creates an image from an image source (i.e. a textual representation of a diagram).
    * 
    * @param imageSource the image source.
+   * @return an image
    */
   public static Image fromSource(ImageSource imageSource) {
     return new Image(imageSource);

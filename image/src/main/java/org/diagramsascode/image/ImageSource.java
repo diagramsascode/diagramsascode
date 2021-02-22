@@ -54,7 +54,8 @@ public class ImageSource {
    * are converted to a textual image source.
    * 
    * @param diagram the diagram to be converted to text 
-   * @return the converter from the diagram contents to the text
+   * @param diagramToSource the converter from the diagram contents to the text
+   * @return the image source text
    */
   public static ImageSource of(Diagram diagram, DiagramToSource diagramToSource) {
     return new ImageSource(diagram, diagramToSource);
