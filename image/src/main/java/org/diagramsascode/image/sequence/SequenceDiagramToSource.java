@@ -16,6 +16,7 @@ public class SequenceDiagramToSource implements DiagramToSource {
   static final String ASYNC_MESSAGE = " ->> ";
   static final String QUOTE = "\"";
   static final String DIAGRAM_HEADER = "@startuml\n!pragma graphviz_dot smetana\n" + 
+      "skinparam style strictuml\n" +
       "skinparam monochrome true\nhide empty description\n";
   static final String DIAGRAM_FOOTER = "@enduml\n";
     
