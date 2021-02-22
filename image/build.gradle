@@ -9,4 +9,5 @@ dependencies {
 	implementation "net.sourceforge.plantuml:plantuml:1.2021.1"
 	implementation project(":core")
 	implementation project(":activity")
+	implementation project(":sequence")
 }
