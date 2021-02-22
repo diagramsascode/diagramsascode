@@ -3,7 +3,8 @@
 [![Gitter](https://badges.gitter.im/diagramsascode/community.svg)](https://gitter.im/diagramsascode/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 *Diagrams as code* is a term used for storing the source of a diagram image as a text file.
-A generator tool like [PlantUML](https://plantuml.com/) generates an image from the text, and automatically layouts it. According to the [ThoughtWorks Technology Radar](https://www.thoughtworks.com/radar/techniques/diagrams-as-code), a key benefit is that 
+Examples are architecture diagrams, or diagrams showing a system's behavior or design.
+A generator tool like [PlantUML](https://plantuml.com/) then generates an image from the text, and automatically layouts it. According to the [ThoughtWorks Technology Radar](https://www.thoughtworks.com/radar/techniques/diagrams-as-code), a key benefit is that 
 you can use version control on the text files.
 
 The diagrams as code project presented here has an additional advantage.
