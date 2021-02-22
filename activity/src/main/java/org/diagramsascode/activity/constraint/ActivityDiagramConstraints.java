@@ -19,7 +19,7 @@ public class ActivityDiagramConstraints implements DiagramConstraints {
   @Override
   public Collection<DiagramNodeConstraint> nodeConstraintsFor(Diagram diagram) {
     return Arrays.asList(
-      new OnlyActivityNodesOnDiagram(),
+      new OnlyActivityDiagramNodesOnDiagram(),
       new ActionHasName(),
       new InitialNodeHasNoIncomingEdges(diagram), 
       new FinalNodeHasNoOutgoingEdges(diagram),
@@ -31,6 +31,6 @@ public class ActivityDiagramConstraints implements DiagramConstraints {
 
   @Override
   public Collection<DiagramEdgeConstraint> edgeConstraintsFor(Diagram diagram) {
-    return Arrays.asList(new OnlyActivityEdgesOnDiagram());
+    return Arrays.asList(new OnlyActivityDiagramEdgesOnDiagram());
   }
 }

@@ -6,5 +6,5 @@ package org.diagramsascode.activity.node;
  * @author b_muth
  *
  */
-public class InitialNode extends ActivityNode{
+public class InitialNode extends ActivityDiagramNode{
 }

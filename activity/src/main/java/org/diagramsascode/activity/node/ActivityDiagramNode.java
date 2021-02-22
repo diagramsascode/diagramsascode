@@ -8,21 +8,21 @@ import org.diagramsascode.core.DiagramNode;
  * @author b_muth
  *
  */
-public abstract class ActivityNode extends DiagramNode {
+public abstract class ActivityDiagramNode extends DiagramNode {
   /**
-   * Creates an activity node with empty text.
+   * Creates an activity diagram node with empty text.
    * 
    */
-  public ActivityNode() {
+  public ActivityDiagramNode() {
     this("");
   }
   
   /**
-   * Creates an activity node with the specified text.
+   * Creates an activity diagram node with the specified text.
    * 
    * @param text the text of the node
    */
-  public ActivityNode(String text) {
+  public ActivityDiagramNode(String text) {
     super(text);
   }
 }

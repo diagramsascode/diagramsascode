@@ -6,5 +6,5 @@ package org.diagramsascode.activity.node;
  * @author b_muth
  *
  */
-public class DecisionNode extends ActivityNode {
+public class DecisionNode extends ActivityDiagramNode {
 }

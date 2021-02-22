@@ -2,7 +2,7 @@ package org.diagramsascode.activity.constraint;
 
 import java.util.Optional;
 
-import org.diagramsascode.activity.node.ActivityNode;
+import org.diagramsascode.activity.node.ActivityDiagramNode;
 import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.DiagramNode;
 import org.diagramsascode.core.DiagramNodeConstraint;
@@ -14,13 +14,13 @@ import org.diagramsascode.core.DiagramNodeConstraint;
  * @author b_muth
  *
  */
-public class OnlyActivityNodesOnDiagram implements DiagramNodeConstraint {
+public class OnlyActivityDiagramNodesOnDiagram implements DiagramNodeConstraint {
 
   @Override
   public Optional<ConstraintViolation<DiagramNode>> validate(DiagramNode node) {
     ConstraintViolation<DiagramNode> constraintViolation = null;
 
-    if (!(node instanceof ActivityNode)) {
+    if (!(node instanceof ActivityDiagramNode)) {
       constraintViolation = new ConstraintViolation<>(this, node, "Node " + node.getText() + " isn't valid on activity diagrams");
     }
 

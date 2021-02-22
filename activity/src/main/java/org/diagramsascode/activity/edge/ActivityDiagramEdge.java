@@ -1,6 +1,6 @@
 package org.diagramsascode.activity.edge;
 
-import org.diagramsascode.activity.node.ActivityNode;
+import org.diagramsascode.activity.node.ActivityDiagramNode;
 import org.diagramsascode.core.DiagramEdge;
 
 /**
@@ -9,25 +9,25 @@ import org.diagramsascode.core.DiagramEdge;
  * @author b_muth
  *
  */
-public abstract class ActivityEdge extends DiagramEdge {
+public abstract class ActivityDiagramEdge extends DiagramEdge {
   /**
-   * Creates an activity edge with empty text.
+   * Creates an activity diagram edge with empty text.
    * 
    * @param from the starting node of the edge
    * @param to the ending node of the edge
    */
-  public ActivityEdge(ActivityNode from, ActivityNode to) {
+  public ActivityDiagramEdge(ActivityDiagramNode from, ActivityDiagramNode to) {
     this(from, to, "");
   }
   
   /**
-   * Creates an activity edge with the specified text.
+   * Creates an activity diagram edge with the specified text.
    * 
    * @param from the starting node of the edge
    * @param to the ending node of the edge
    * @param text the text of the edge
    */
-  public ActivityEdge(ActivityNode from, ActivityNode to, String text) {
+  public ActivityDiagramEdge(ActivityDiagramNode from, ActivityDiagramNode to, String text) {
     super(from, to, text);
   }
 }

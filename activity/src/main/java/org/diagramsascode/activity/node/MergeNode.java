@@ -6,5 +6,5 @@ package org.diagramsascode.activity.node;
  * @author b_muth
  *
  */
-public class MergeNode extends ActivityNode{
+public class MergeNode extends ActivityDiagramNode{
 }

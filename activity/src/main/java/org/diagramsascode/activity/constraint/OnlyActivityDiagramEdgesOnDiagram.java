@@ -2,7 +2,7 @@ package org.diagramsascode.activity.constraint;
 
 import java.util.Optional;
 
-import org.diagramsascode.activity.edge.ActivityEdge;
+import org.diagramsascode.activity.edge.ActivityDiagramEdge;
 import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramEdgeConstraint;
@@ -14,13 +14,13 @@ import org.diagramsascode.core.DiagramEdgeConstraint;
  * @author b_muth
  *
  */
-public class OnlyActivityEdgesOnDiagram implements DiagramEdgeConstraint {
+public class OnlyActivityDiagramEdgesOnDiagram implements DiagramEdgeConstraint {
 
   @Override
   public Optional<ConstraintViolation<DiagramEdge>> validate(DiagramEdge edge) {
     ConstraintViolation<DiagramEdge> constraintViolation = null;
 
-    if (!(edge instanceof ActivityEdge)) {
+    if (!(edge instanceof ActivityDiagramEdge)) {
       constraintViolation = new ConstraintViolation<>(this, edge, "Edge " + edge.getText() + " isn't valid on activity diagrams");
     }
 

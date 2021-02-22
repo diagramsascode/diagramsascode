@@ -6,7 +6,7 @@ package org.diagramsascode.activity.node;
  * @author b_muth
  *
  */
-public class Action extends ActivityNode{
+public class Action extends ActivityDiagramNode{
   /**
    * Creates a new action.
    * 

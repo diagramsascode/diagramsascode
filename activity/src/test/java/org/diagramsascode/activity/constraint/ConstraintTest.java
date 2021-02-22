@@ -31,7 +31,7 @@ class ConstraintTest {
 
     ConstraintViolation<?> violation = violations.get(0);
     
-    assertEquals(OnlyActivityNodesOnDiagram.class, violation.getConstraint().getClass());
+    assertEquals(OnlyActivityDiagramNodesOnDiagram.class, violation.getConstraint().getClass());
     assertEquals(foreignNode, violation.getDiagramElement());
     
     String message = violation.getMessage();
@@ -53,7 +53,7 @@ class ConstraintTest {
 
     ConstraintViolation<?> violation = violations.get(0);
     
-    assertEquals(OnlyActivityEdgesOnDiagram.class, violation.getConstraint().getClass());
+    assertEquals(OnlyActivityDiagramEdgesOnDiagram.class, violation.getConstraint().getClass());
     assertEquals(foreignEdge, violation.getDiagramElement());
     
     String message = violation.getMessage();
