@@ -17,10 +17,10 @@ import org.diagramsascode.sequence.edge.Message;
 import org.diagramsascode.sequence.node.Participant;
 import org.junit.jupiter.api.Test;
 
-class ImageTest {
+class ActivityDiagramImageTest {
   @Test
   void writesSequenceDiagramImageToFile() throws IOException {
-    // Create the participant (that exchange messages)
+    // Create the participants (that exchange messages)
     final Participant participant1  = new Participant("Client");
     final Participant participant2  = new Participant("Server");
     
