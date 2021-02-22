@@ -13,11 +13,41 @@ import org.diagramsascode.activity.node.FinalNode;
 import org.diagramsascode.activity.node.InitialNode;
 import org.diagramsascode.activity.node.MergeNode;
 import org.diagramsascode.core.Diagram;
+import org.diagramsascode.sequence.edge.Message;
+import org.diagramsascode.sequence.node.Participant;
 import org.junit.jupiter.api.Test;
 
 class ImageTest {
   @Test
-  void writesDiagramImageToFile() throws IOException {
+  void writesSequenceDiagramImageToFile() throws IOException {
+    // Create the participant (that exchange messages)
+    final Participant participant1  = new Participant("Client");
+    final Participant participant2  = new Participant("Server");
+    
+    // Create the request and response message
+    final Message message1 = new Message(participant1, participant2, "Request Message");
+    final Message message2 = new Message(participant2, participant1, "Response Message");
+    
+    // Build the diagram
+    Diagram diagram = Diagram.builder()
+      .withNodes(participant1, participant2)
+      .withEdges(message1, message2)
+      .build();
+    
+    // Create the source text for PlantUML. You can print it to read it, if you want to.
+    ImageSource source = ImageSource.ofSequenceDiagram(diagram);
+        
+    // Create the image of the diagram and write it to a PNG file.
+    Image image = Image.fromSource(source);
+    File outputFile = File.createTempFile("sequence", ".png");
+    image.writeToPngFile(outputFile);
+    
+    System.out.println("Sequence diagram written to: " + outputFile);
+    assertTrue(outputFile.exists());
+  }
+  
+  @Test
+  void writesActivityDiagramImageToFile() throws IOException {
     // Create the initial and final node (to define where the flow starts and ends)
     InitialNode initialNode = new InitialNode();
     FinalNode finalNode = new FinalNode();
@@ -59,7 +89,7 @@ class ImageTest {
     File outputFile = File.createTempFile("activity", ".png");
     image.writeToPngFile(outputFile);
     
-    System.out.println("Diagram written to: " + outputFile);
+    System.out.println("Activity diagram written to: " + outputFile);
     assertTrue(outputFile.exists());
   }
 }
