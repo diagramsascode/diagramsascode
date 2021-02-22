@@ -33,6 +33,7 @@ final Message message2 = new Message(participant2, participant1, "Response Messa
 Diagram diagram = Diagram.builder()
   .withNodes(participant1, participant2)
   .withEdges(message1, message2)
+  .withConstraints(new SequenceDiagramConstraints())
   .build();
 
 // Create the source text for PlantUML. You can print it to read it, if you want to.

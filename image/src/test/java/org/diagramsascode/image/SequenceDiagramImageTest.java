@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.diagramsascode.core.Diagram;
+import org.diagramsascode.sequence.constraint.SequenceDiagramConstraints;
 import org.diagramsascode.sequence.edge.Message;
 import org.diagramsascode.sequence.node.Participant;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,7 @@ class SequenceDiagramImageTest {
     Diagram diagram = Diagram.builder()
       .withNodes(participant1, participant2)
       .withEdges(message1, message2)
+      .withConstraints(new SequenceDiagramConstraints())
       .build();
     
     // Create the source text for PlantUML. You can print it to read it, if you want to.
