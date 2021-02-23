@@ -1,7 +1,6 @@
 package org.diagramsascode.core;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
@@ -16,11 +15,11 @@ import java.util.stream.Collectors;
  *
  */
 public class Diagram{
-  private final Set<DiagramNode> nodes;
-  private final Set<DiagramEdge> edges;
+  private final LinkedHashSet<DiagramNode> nodes;
+  private final LinkedHashSet<DiagramEdge> edges;
   private final DiagramConstraints constraints;
   
-  private Diagram(Set<DiagramNode> nodes, Set<DiagramEdge> edges, DiagramConstraints constraints) {
+  private Diagram(LinkedHashSet<DiagramNode> nodes, LinkedHashSet<DiagramEdge> edges, DiagramConstraints constraints) {
     this.nodes = Objects.requireNonNull(nodes, "nodes must be non-null");
     this.edges = Objects.requireNonNull(edges, "edges must be non-null");
     this.constraints = Objects.requireNonNull(constraints, "constraints must be non-null");    
@@ -49,7 +48,9 @@ public class Diagram{
   }
 
   /**
-   * Returns the nodes contained on this diagram.
+   * Returns the set of nodes shown on this diagram.
+   * The order of nodes matches the order you used when
+   * building the diagram, potentially with duplicates removed.
    * 
    * @return the nodes
    */
@@ -58,7 +59,9 @@ public class Diagram{
   }
 
   /**
-   * Returns the edges contained on this diagram.
+   * Returns the set of edges shown on this diagram.
+   * The order of edges matches the order you used when
+   * building the diagram, potentially with duplicates removed.
    * 
    * @return the edges
    */
@@ -108,8 +111,8 @@ public class Diagram{
   }
 
   public static class DiagramBuilder {
-    private Set<DiagramNode> nodes;
-    private Set<DiagramEdge> edges;
+    private LinkedHashSet<DiagramNode> nodes;
+    private LinkedHashSet<DiagramEdge> edges;
     private DiagramConstraints constraints;
     
     private DiagramBuilder() {
@@ -136,12 +139,12 @@ public class Diagram{
      * @return a builder to continue building the diagram
      */
     public NodeBuilder withNodes(List<DiagramNode> nodes) {
-      HashSet<DiagramNode> nodeSet = new LinkedHashSet<>(nodes);
+      LinkedHashSet<DiagramNode> nodeSet = new LinkedHashSet<>(nodes);
       return new NodeBuilder(nodeSet);
     }
     
     public class NodeBuilder{
-      private NodeBuilder(Set<DiagramNode> nodes) {
+      private NodeBuilder(LinkedHashSet<DiagramNode> nodes) {
         DiagramBuilder.this.nodes = nodes;
       }
       
@@ -166,12 +169,12 @@ public class Diagram{
        * @return a builder to continue building the diagram
        */
       public EdgeBuilder withEdges(List<DiagramEdge> edges) {
-        Set<DiagramEdge> edgeSet = new LinkedHashSet<>(edges);
+        LinkedHashSet<DiagramEdge> edgeSet = new LinkedHashSet<>(edges);
         return new EdgeBuilder(edgeSet);
       }
       
       public class EdgeBuilder{
-        private EdgeBuilder(Set<DiagramEdge> edges) {
+        private EdgeBuilder(LinkedHashSet<DiagramEdge> edges) {
           DiagramBuilder.this.edges = edges;
         }
 
