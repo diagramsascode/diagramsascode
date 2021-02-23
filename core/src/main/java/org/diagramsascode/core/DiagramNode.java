@@ -41,6 +41,31 @@ public abstract class DiagramNode implements DiagramElement{
   }
   
   @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    DiagramNode other = (DiagramNode) obj;
+    if (id == null) {
+      if (other.id != null)
+        return false;
+    } else if (!id.equals(other.id))
+      return false;
+    return true;
+  }
+  
+  @Override
   public String toString() {
     String text = getText().isEmpty()? "" : " [text=" + getText() + "]";
     return getClass().getSimpleName() + text;
