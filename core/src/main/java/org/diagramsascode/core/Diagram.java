@@ -1,6 +1,7 @@
 package org.diagramsascode.core;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
@@ -116,26 +117,27 @@ public class Diagram{
     
     /**
      * Specifies the nodes of this diagram, comma separated (varargs).
-     * Duplicates will be ignored.
+     * Duplicates nodes will be ignored.
      * 
      * @param nodes the nodes to be shown on the diagram
      * 
      * @return a builder to continue building the diagram
      */
     public NodeBuilder withNodes(DiagramNode... nodes) {
-      Set<DiagramNode> nodeSet = new LinkedHashSet<>(Arrays.asList(nodes));
-      return withNodes(nodeSet);
+      return withNodes(Arrays.asList(nodes));
     }
     
     /**
-     * Specifies the nodes of this diagram, as a set.
+     * Specifies the nodes of this diagram, as a list.
+     * Duplicates nodes will be ignored.
      * 
      * @param nodes the nodes to be shown on the diagram
      * 
      * @return a builder to continue building the diagram
      */
-    public NodeBuilder withNodes(Set<DiagramNode> nodes) {
-      return new NodeBuilder(nodes);
+    public NodeBuilder withNodes(List<DiagramNode> nodes) {
+      HashSet<DiagramNode> nodeSet = new LinkedHashSet<>(nodes);
+      return new NodeBuilder(nodeSet);
     }
     
     public class NodeBuilder{
