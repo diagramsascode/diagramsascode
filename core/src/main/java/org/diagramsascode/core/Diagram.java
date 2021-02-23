@@ -154,19 +154,20 @@ public class Diagram{
        * @return a builder to continue building the diagram
        */
       public EdgeBuilder withEdges(DiagramEdge... edges) {
-        Set<DiagramEdge> edgeSet = new LinkedHashSet<>(Arrays.asList(edges));
-        return withEdges(edgeSet);
+        return withEdges(Arrays.asList(edges));
       }
       
       /**
-       * Specifies the edges of this diagram, as as set.
+       * Specifies the edges of this diagram, as as list.
+       * Duplicate edges will be ignored.
        * 
        * @param edges the edges to be shown on the diagram
        * 
        * @return a builder to continue building the diagram
        */
-      public EdgeBuilder withEdges(Set<DiagramEdge> edges) {
-        return new EdgeBuilder(edges);
+      public EdgeBuilder withEdges(List<DiagramEdge> edges) {
+        Set<DiagramEdge> edgeSet = new LinkedHashSet<>(edges);
+        return new EdgeBuilder(edgeSet);
       }
       
       public class EdgeBuilder{
