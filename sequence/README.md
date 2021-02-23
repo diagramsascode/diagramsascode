@@ -1,0 +1,5 @@
+# Diagrams as code - sequence
+[![Build Status](https://travis-ci.com/diagramsascode/diagramsascode.svg?branch=main)](https://travis-ci.com/diagramsascode/diagramsascode)
+[![Gitter](https://badges.gitter.im/diagramsascode/community.svg)](https://gitter.im/diagramsascode/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+This sub project builds on the [core](https://github.com/diagramsascode/diagramsascode/tree/main/core) sub project to represent UML sequence diagrams with [participants](https://github.com/diagramsascode/diagramsascode/blob/main/sequence/src/main/java/org/diagramsascode/sequence/node/Participant.java) and [messages](https://github.com/diagramsascode/diagramsascode/blob/main/sequence/src/main/java/org/diagramsascode/sequence/edge/Message.java). Adds sequence diagram specific [constraints](https://github.com/diagramsascode/diagramsascode/tree/main/sequence/src/main/java/org/diagramsascode/sequence/constraint).
