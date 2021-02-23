@@ -136,7 +136,7 @@ or reuse existing ones.
 
 # Sub projects
 The diagrams as code project consists of the following sub projects:
-* **core**: defines the core modeling elements, like nodes, edges and constraints. Not intended to be used directly. Instead, it needs to be extended for each diagram type to be generated.
+* **core**: defines the core modeling elements, like nodes, edges and constraints. It is not intended to be used directly. Instead, it needs to be extended for each diagram type to be generated.
 * **sequence**: builds on core to represent UML sequence diagrams with participants and messages. Adds sequence diagram specific constraints.
 * **activity**: builds on core to represent UML activity diagrams with initial/final nodes, actions, decision/merge nodes and control flow. Adds activity diagram specific constraints.
 * **image**: enables you to generate automatically layouted images for the diagrams.

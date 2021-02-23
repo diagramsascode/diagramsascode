@@ -1,0 +1,5 @@
+# Diagrams as code - sequence
+[![Build Status](https://travis-ci.com/diagramsascode/diagramsascode.svg?branch=main)](https://travis-ci.com/diagramsascode/diagramsascode)
+[![Gitter](https://badges.gitter.im/diagramsascode/community.svg)](https://gitter.im/diagramsascode/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+This sub project defines the core modeling elements, like [nodes](https://github.com/diagramsascode/diagramsascode/blob/main/core/src/main/java/org/diagramsascode/core/DiagramNode.java), [edges](https://github.com/diagramsascode/diagramsascode/blob/main/core/src/main/java/org/diagramsascode/core/DiagramEdge.java) and [constraints](https://github.com/diagramsascode/diagramsascode/blob/main/core/src/main/java/org/diagramsascode/core/DiagramConstraints.java). It is not intended to be used directly. Instead, it needs to be extended for each diagram type to be generated.
