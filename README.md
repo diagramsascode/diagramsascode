@@ -19,9 +19,9 @@ If you are using Maven, include the following in your POM:
 
 ``` xml
 <dependency>
-	<groupId>org.diagramsascode</groupId>
-	<artifactId>diagramsascode-image</artifactId>
-	<version>0.1</version>
+  <groupId>org.diagramsascode</groupId>
+  <artifactId>diagramsascode-image</artifactId>
+  <version>0.1</version>
 </dependency>
 ```
 
