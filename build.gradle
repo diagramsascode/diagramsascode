@@ -28,6 +28,18 @@ subprojects{
 		useJUnitPlatform()
 	}
 	
+	task javadocJar(type: Jar) {
+    	from javadoc
+	}
+	
+	task sourcesJar(type: Jar) {
+    	from sourceSets.main.allSource
+	}
+
+	artifacts {
+	    archives javadocJar, sourcesJar
+	}
+	
 	if (project.hasProperty("signing.keyId")) {
 		apply plugin: 'signing'
 	
@@ -38,9 +50,18 @@ subprojects{
 						name = 'diagrams as code'
 						description = 'Enables you to generate diagrams from your code.'
 						url = 'http://diagramsascode.org/'
+						packaging = 'jar'
 						
 						from components.java
+						         				
+          				artifact javadocJar {
+							classifier "javadoc"
+          				}
 						
+						artifact sourcesJar {
+							classifier "sources"
+          				}
+
 						licenses {
 							license {
 								name = 'The Apache Software License, Version 2.0'
@@ -81,19 +102,5 @@ subprojects{
 		signing {
 			sign publishing.publications.mavenJava
 		}
-	}
-	
-	task javadocJar(type: Jar) {
-    	classifier = 'javadoc'
-    	from javadoc
-	}
-	
-	task sourcesJar(type: Jar) {
-    	classifier = 'sources'
-    	from sourceSets.main.allSource
-	}
-
-	artifacts {
-	    archives javadocJar, sourcesJar
 	}
 }
