@@ -4,7 +4,7 @@
 
 This sub project enables you to generate automatically layouted images for the diagrams.
 
-You can create your own textual representation of a diagram by implementing the [DiagramToSource](https://github.com/diagramsascode/diagramsascode/blob/main/image/src/main/java/org/diagramsascode/image/DiagramToSource.java) 
+You can create your own textual representation of a diagram by implementing the [DiagramToSource](https://github.com/diagramsascode/diagramsascode/blob/main/diagramsascode-image/src/main/java/org/diagramsascode/image/DiagramToSource.java) 
 interface.
 
 To create the source of such a diagram, call `ImageSource.of(diagram, diagramToSource)`.
