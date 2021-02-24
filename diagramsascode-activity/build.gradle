@@ -6,5 +6,5 @@ jar {
 }
 
 dependencies {
-	implementation project(":core")
+	api project(":diagramsascode-core")
 }

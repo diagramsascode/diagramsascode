@@ -1,0 +1,13 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'diagrams as code - image',
+                   'Implementation-Version': archiveVersion
+	}
+}
+
+dependencies {
+	implementation "net.sourceforge.plantuml:plantuml:1.2021.1"
+	api project(":diagramsascode-core")
+	api project(":diagramsascode-activity")
+	api project(":diagramsascode-sequence")
+}

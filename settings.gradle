@@ -1,5 +1,5 @@
-include 'core'
-include 'activity'
-include 'sequence'
-include 'image'
+include 'diagramsascode-core'
+include 'diagramsascode-activity'
+include 'diagramsascode-sequence'
+include 'diagramsascode-image'
 
