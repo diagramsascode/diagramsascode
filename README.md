@@ -7,10 +7,11 @@ Examples are architecture diagrams, or diagrams showing a system's behavior or d
 A generator tool like [PlantUML](https://plantuml.com/) then generates an image from the text, and automatically layouts it. According to the [ThoughtWorks Technology Radar](https://www.thoughtworks.com/radar/techniques/diagrams-as-code), a key benefit is that 
 you can use version control on the text files.
 
-The diagrams as code project presented here has an additional advantage.
+The diagrams as code project presented here has additional advantages.
 
 By representing the diagrams as models in Java source code, 
 you can automatically check if the generated diagrams are modeled correctly.
+And you get better syntax highlighting and auto-completion, compared to solutions like PlantUML.
 
 # Getting started
 Diagrams as code is available on Maven Central.
