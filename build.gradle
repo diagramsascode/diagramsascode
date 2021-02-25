@@ -1,6 +1,6 @@
 subprojects{
 	group = 'org.diagramsascode'
-	version = '0.1.1-SNAPSHOT'
+	version = '0.1.1'
 	
 	apply plugin: 'java-library'
 	apply plugin: 'maven-publish'
