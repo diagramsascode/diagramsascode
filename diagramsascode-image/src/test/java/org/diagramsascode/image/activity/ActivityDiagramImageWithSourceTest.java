@@ -1,7 +1,5 @@
 package org.diagramsascode.image.activity;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -62,6 +60,5 @@ class ActivityDiagramImageWithSourceTest {
     image.writeToPngFile(outputFile);
     
     System.out.println("Activity diagram written to: " + outputFile);
-    assertTrue(outputFile.exists());
   }
 }

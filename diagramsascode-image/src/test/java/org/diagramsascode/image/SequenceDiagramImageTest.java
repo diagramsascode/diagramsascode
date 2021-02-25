@@ -1,17 +1,15 @@
-package org.diagramsascode.image.sequence;
+package org.diagramsascode.image;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.diagramsascode.core.Diagram;
-import org.diagramsascode.image.Image;
-import org.diagramsascode.image.ImageSource;
 import org.diagramsascode.sequence.constraint.SequenceDiagramConstraints;
 import org.diagramsascode.sequence.edge.Message;
 import org.diagramsascode.sequence.node.Participant;
 import org.junit.jupiter.api.Test;
 
-class SequenceDiagramImageWithSourceTest {
+class SequenceDiagramImageTest {
   @Test
   void writesSequenceDiagramImageToFile() throws IOException {
     // Create the participants (that exchange messages)
@@ -28,14 +26,10 @@ class SequenceDiagramImageWithSourceTest {
       .withEdges(message1, message2)
       .withConstraints(new SequenceDiagramConstraints())
       .build();
-    
-    // Create the source text for PlantUML. You can print it to read it, if you want to.
-    ImageSource source = ImageSource.ofSequenceDiagram(diagram);
         
     // Create the image of the diagram and write it to a PNG file.
-    Image image = Image.fromSource(source);
     File outputFile = File.createTempFile("sequence", ".png");
-    image.writeToPngFile(outputFile);
+    SequenceDiagramImage.of(diagram).writeToPngFile(outputFile);;
     
     System.out.println("Sequence diagram written to: " + outputFile);
   }
