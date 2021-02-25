@@ -29,7 +29,7 @@ class SequenceDiagramImageTest {
         
     // Create the image of the diagram and write it to a PNG file.
     File outputFile = File.createTempFile("sequence", ".png");
-    SequenceDiagramImage.of(diagram).writeToPngFile(outputFile);;
+    SequenceDiagramImage.of(diagram).writeToPngFile(outputFile);
     
     System.out.println("Sequence diagram written to: " + outputFile);
   }
