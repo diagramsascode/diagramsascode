@@ -13,12 +13,12 @@ class SequenceDiagramImageTest {
   @Test
   void writesSequenceDiagramImageToFile() throws IOException {
     // Create the participants (that exchange messages)
-    final Participant participant1  = new Participant("Client");
-    final Participant participant2  = new Participant("Server");
+    Participant participant1  = new Participant("Client");
+    Participant participant2  = new Participant("Server");
     
     // Create the request and response message
-    final Message message1 = new Message(participant1, participant2, "Request Message");
-    final Message message2 = new Message(participant2, participant1, "Response Message");
+    Message message1 = new Message(participant1, participant2, "Request Message");
+    Message message2 = new Message(participant2, participant1, "Response Message");
     
     // Build the diagram
     Diagram diagram = Diagram.builder()
