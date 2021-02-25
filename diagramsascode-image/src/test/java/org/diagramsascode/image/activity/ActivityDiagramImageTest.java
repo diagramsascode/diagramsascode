@@ -1,4 +1,4 @@
-package org.diagramsascode.image;
+package org.diagramsascode.image.activity;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,6 +13,8 @@ import org.diagramsascode.activity.node.FinalNode;
 import org.diagramsascode.activity.node.InitialNode;
 import org.diagramsascode.activity.node.MergeNode;
 import org.diagramsascode.core.Diagram;
+import org.diagramsascode.image.Image;
+import org.diagramsascode.image.ImageSource;
 import org.junit.jupiter.api.Test;
 
 class ActivityDiagramImageTest { 

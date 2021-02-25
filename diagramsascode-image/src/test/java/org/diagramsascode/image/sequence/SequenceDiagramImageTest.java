@@ -1,4 +1,4 @@
-package org.diagramsascode.image;
+package org.diagramsascode.image.sequence;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.IOException;
 
 import org.diagramsascode.core.Diagram;
+import org.diagramsascode.image.Image;
+import org.diagramsascode.image.ImageSource;
 import org.diagramsascode.sequence.constraint.SequenceDiagramConstraints;
 import org.diagramsascode.sequence.edge.Message;
 import org.diagramsascode.sequence.node.Participant;
