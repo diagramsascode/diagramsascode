@@ -17,7 +17,7 @@ import org.diagramsascode.image.Image;
 import org.diagramsascode.image.ImageSource;
 import org.junit.jupiter.api.Test;
 
-class ActivityDiagramImageTest { 
+class ActivityDiagramImageWithSourceTest { 
   @Test
   void writesActivityDiagramImageToFile() throws IOException {
     // Create the initial and final node (to define where the flow starts and ends)

@@ -13,7 +13,7 @@ import org.diagramsascode.sequence.edge.Message;
 import org.diagramsascode.sequence.node.Participant;
 import org.junit.jupiter.api.Test;
 
-class SequenceDiagramImageTest {
+class SequenceDiagramImageWithSourceTest {
   @Test
   void writesSequenceDiagramImageToFile() throws IOException {
     // Create the participants (that exchange messages)
