@@ -15,7 +15,7 @@ import org.diagramsascode.activity.node.MergeNode;
 import org.diagramsascode.core.Diagram;
 import org.junit.jupiter.api.Test;
 
-class ImageTest { 
+class ActivityDiagramImageTest { 
   @Test
   void writesActivityDiagramImageToFile() throws IOException {
     // Create the initial and final node (to define where the flow starts and ends)
@@ -51,13 +51,9 @@ class ImageTest {
       .withConstraints(new ActivityDiagramConstraints())
       .build();
     
-    // Create the source text for PlantUML. You can print it to read it, if you want to.
-    ImageSource source = ImageSource.ofActivityDiagram(diagram);
-    
     // Create the image of the diagram and write it to a PNG file.
-    Image image = Image.fromSource(source);
     File outputFile = File.createTempFile("activity", ".png");
-    image.writeToPngFile(outputFile);
+    ActivityDiagramImage.of(diagram).writeToPngFile(outputFile);
     
     System.out.println("Activity diagram written to: " + outputFile);
     assertTrue(outputFile.exists());
