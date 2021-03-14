@@ -20,7 +20,7 @@ class SequenceDiagramToSourceTest {
 
     String expectedSource = DIAGRAM_HEADER + DIAGRAM_FOOTER;
     String actualSource = 
-      ImageSource.ofSequenceDiagram(diagram).toString();
+      ImageSource.of(diagram, new SequenceDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
   }
@@ -42,7 +42,7 @@ class SequenceDiagramToSourceTest {
       DIAGRAM_FOOTER;
     
     String actualSource = 
-        ImageSource.ofSequenceDiagram(diagram).toString();
+        ImageSource.of(diagram, new SequenceDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
   }
@@ -66,7 +66,7 @@ class SequenceDiagramToSourceTest {
       DIAGRAM_FOOTER;
     
     String actualSource = 
-        ImageSource.ofSequenceDiagram(diagram).toString();
+        ImageSource.of(diagram, new SequenceDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
     

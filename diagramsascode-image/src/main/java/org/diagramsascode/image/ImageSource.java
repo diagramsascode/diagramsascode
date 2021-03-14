@@ -8,8 +8,6 @@ import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.Diagram;
 import org.diagramsascode.core.DiagramElement;
 import org.diagramsascode.image.activity.ActivityDiagramToSource;
-import org.diagramsascode.image.sequence.SequenceDiagramToSource;
-import org.diagramsascode.sequence.constraint.SequenceDiagramConstraints;
 
 /**
  * Represents the textual source code that contains information how to generate the image.
@@ -35,20 +33,6 @@ public class ImageSource {
     if(!constraintViolations.isEmpty()) {
       throw new ConstraintViolationException(constraintViolations);
     }
-  }
-  
-  /**
-   * Creates the source text for rendering a sequence diagram image.
-   * 
-   * It's up to the user to make sure that the diagram passed in 
-   * is actually an activity diagram (by specifying {@link SequenceDiagramConstraints}
-   * when building the {@link Diagram}).
-   * 
-   * @param diagram the sequence diagram 
-   * @return the image source text
-   */
-  public static ImageSource ofSequenceDiagram(Diagram diagram) {
-    return of(diagram, new SequenceDiagramToSource());
   }
   
   /**
