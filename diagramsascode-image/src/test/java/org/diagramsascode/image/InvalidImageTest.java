@@ -15,6 +15,7 @@ import org.diagramsascode.activity.node.InitialNode;
 import org.diagramsascode.core.Constraint;
 import org.diagramsascode.core.ConstraintViolation;
 import org.diagramsascode.core.Diagram;
+import org.diagramsascode.image.activity.ActivityDiagramToSource;
 import org.junit.jupiter.api.Test;
 
 class InvalidImageTest {
@@ -47,7 +48,7 @@ class InvalidImageTest {
     
     // Create the source text for PlantUML. This fails with an exception,
     // because the diagram is invalid
-    ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () ->ImageSource.ofActivityDiagram(invalidDiagram));
+    ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () ->ImageSource.of(invalidDiagram, new ActivityDiagramToSource()));
     
     // Assert that one  constraint has been violated.
     List<ConstraintViolation<?>> violations = exception.getConstraintViolations();

@@ -25,7 +25,7 @@ class ActivityDiagramToSourceTest {
 
     String expectedSource = DIAGRAM_HEADER + DIAGRAM_FOOTER;
     String actualSource = 
-      ImageSource.ofActivityDiagram(diagram).toString();
+      ImageSource.of(diagram, new ActivityDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
   }
@@ -45,7 +45,7 @@ class ActivityDiagramToSourceTest {
       DIAGRAM_FOOTER;
     
     String actualSource = 
-        ImageSource.ofActivityDiagram(diagram).toString();
+        ImageSource.of(diagram, new ActivityDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
   }
@@ -69,7 +69,7 @@ class ActivityDiagramToSourceTest {
       DIAGRAM_FOOTER;
     
     String actualSource = 
-        ImageSource.ofActivityDiagram(diagram).toString();
+        ImageSource.of(diagram, new ActivityDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
   }
@@ -99,7 +99,7 @@ class ActivityDiagramToSourceTest {
       DIAGRAM_FOOTER;
     
     String actualSource = 
-        ImageSource.ofActivityDiagram(diagram).toString();
+        ImageSource.of(diagram, new ActivityDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
   }
@@ -121,7 +121,7 @@ class ActivityDiagramToSourceTest {
       DIAGRAM_FOOTER;
     
     String actualSource = 
-        ImageSource.ofActivityDiagram(diagram).toString();
+        ImageSource.of(diagram, new ActivityDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
   }
@@ -145,7 +145,7 @@ class ActivityDiagramToSourceTest {
       DIAGRAM_FOOTER;
     
     String actualSource = 
-        ImageSource.ofActivityDiagram(diagram).toString();
+        ImageSource.of(diagram, new ActivityDiagramToSource()).toString();
     
     assertEquals(expectedSource, actualSource);
   }
@@ -186,7 +186,7 @@ class ActivityDiagramToSourceTest {
         DIAGRAM_FOOTER;
       
       String actualSource = 
-          ImageSource.ofActivityDiagram(diagram).toString();
+          ImageSource.of(diagram, new ActivityDiagramToSource()).toString();
       System.out.println(actualSource);
       
       assertEquals(expectedSource, actualSource);

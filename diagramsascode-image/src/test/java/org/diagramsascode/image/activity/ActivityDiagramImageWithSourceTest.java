@@ -51,9 +51,10 @@ class ActivityDiagramImageWithSourceTest {
       .withConstraints(new ActivityDiagramConstraints())
       .build();
     
-    // Create the source text for PlantUML. You can print it to read it, if you want to.
-    ImageSource source = ImageSource.ofActivityDiagram(diagram);
-    
+    // Create the source text for PlantUML. You can print it to read it, if you want
+    // to.
+    ImageSource source = ImageSource.of(diagram, new ActivityDiagramToSource());
+
     // Create the image of the diagram and write it to a PNG file.
     Image image = Image.fromSource(source);
     File outputFile = File.createTempFile("activity", ".png");
