@@ -10,7 +10,7 @@ import org.diagramsascode.core.DiagramNode;
  */
 public abstract class SequenceDiagramNode extends DiagramNode {
   /**
-   * Creates an activity node with empty text.
+   * Creates a node with empty text.
    * 
    */
   public SequenceDiagramNode() {
@@ -18,7 +18,7 @@ public abstract class SequenceDiagramNode extends DiagramNode {
   }
   
   /**
-   * Creates a sequence diagram node with the specified text.
+   * Creates a node with the specified text.
    * 
    * @param text the text of the node
    */

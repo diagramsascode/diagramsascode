@@ -1,5 +1,6 @@
 include 'diagramsascode-core'
 include 'diagramsascode-activity'
 include 'diagramsascode-sequence'
+include 'diagramsascode-state'
 include 'diagramsascode-image'
 

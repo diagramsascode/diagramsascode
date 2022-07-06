@@ -11,17 +11,7 @@ import org.diagramsascode.sequence.node.SequenceDiagramNode;
  */
 public abstract class SequenceDiagramEdge extends DiagramEdge {
   /**
-   * Creates an sequence diagram edge with empty text.
-   * 
-   * @param from the starting node of the edge
-   * @param to the ending node of the edge
-   */
-  public SequenceDiagramEdge(SequenceDiagramNode from, SequenceDiagramNode to) {
-    this(from, to, "");
-  }
-  
-  /**
-   * Creates an sequence diagram edge with the specified text.
+   * Creates an edge with the specified text.
    * 
    * @param from the starting node of the edge
    * @param to the ending node of the edge

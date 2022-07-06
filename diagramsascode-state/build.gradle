@@ -1,0 +1,10 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'diagrams as code - state',
+                   'Implementation-Version': archiveVersion
+	}
+}
+
+dependencies {
+	api project(":diagramsascode-core")
+}
