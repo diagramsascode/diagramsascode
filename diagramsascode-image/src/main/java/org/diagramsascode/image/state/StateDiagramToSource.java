@@ -1,4 +1,7 @@
-package org.diagramsascode.image.sequence;
+package org.diagramsascode.image.state;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.diagramsascode.core.Diagram;
 import org.diagramsascode.core.DiagramEdge;
@@ -12,36 +15,42 @@ import org.diagramsascode.image.DiagramToSource;
  * @author b_muth
  *
  */
-public class SequenceDiagramToSource implements DiagramToSource {
-  static final String ASYNC_MESSAGE = " ->> ";
+public class StateDiagramToSource implements DiagramToSource {
+  static final String TRANSITION = " --> ";
   static final String QUOTE = "\"";
   static final String DIAGRAM_HEADER = "@startuml\n!pragma layout smetana\n" + 
       "skinparam style strictuml\n" +
       "skinparam monochrome true\nhide empty description\n";
   static final String DIAGRAM_FOOTER = "@enduml\n";
+  private List<DiagramNode> nodes;
     
   @Override
   public String header(Diagram diagram) {
+    this.nodes = new ArrayList<>(diagram.getNodes());
     return DIAGRAM_HEADER;
   }
 
   @Override
   public String node(DiagramNode node) {
-    String source = "";
+    String source = "state \"" + node.getText() + "\" as " + referenceOf(node) + "\n";
     return source;
   }
 
   @Override
   public String edge(DiagramEdge edge) {
-    String fromNodeText = edge.getFrom().getText();
-    String toNodeText = edge.getTo().getText();
+    DiagramNode fromNode = edge.getFrom();
+    DiagramNode toNode = edge.getTo();
     
-    String source = QUOTE + fromNodeText + QUOTE + ASYNC_MESSAGE + QUOTE + toNodeText + QUOTE + " : " + edge.getText() + "\n";
+    String source = referenceOf(fromNode) + TRANSITION +  referenceOf(toNode) + " : " + edge.getText() + "\n";
     return source;
   }
 
   @Override
   public String footer(Diagram diagram) {
     return DIAGRAM_FOOTER;
+  }
+  
+  private String referenceOf(DiagramNode node) {
+    return "S" + String.valueOf(nodes.indexOf(node));
   }
 }

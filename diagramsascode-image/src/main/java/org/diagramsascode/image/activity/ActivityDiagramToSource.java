@@ -17,7 +17,7 @@ import org.diagramsascode.image.DiagramToSource;
  *
  */
 public class ActivityDiagramToSource implements DiagramToSource {
-  static final String DIAGRAM_HEADER = "@startuml\n!pragma graphviz_dot smetana\n" + 
+  static final String DIAGRAM_HEADER = "@startuml\n!pragma layout smetana\n" + 
       "skinparam monochrome true\nhide empty description\n";
   static final String DIAGRAM_FOOTER = "@enduml\n";
   static final String STATE = "state ";

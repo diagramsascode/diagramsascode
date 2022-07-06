@@ -6,8 +6,9 @@ jar {
 }
 
 dependencies {
-	implementation "net.sourceforge.plantuml:plantuml:1.2021.1"
+	implementation "net.sourceforge.plantuml:plantuml:1.2022.6"
 	api project(":diagramsascode-core")
 	api project(":diagramsascode-activity")
 	api project(":diagramsascode-sequence")
+	api project(":diagramsascode-state")
 }

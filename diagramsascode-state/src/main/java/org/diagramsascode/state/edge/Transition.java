@@ -11,11 +11,11 @@ import org.diagramsascode.state.node.State;
  */
 public class Transition extends StateDiagramEdge {
   /**
-   * Creates a message edge.
+   * Creates an edge.
    * 
    * @param from the starting node of the edge
    * @param to the ending node of the edge
-   * @param text the text of the message
+   * @param text the text of the edge
    */
   public Transition(State from, State to, String text) {
     super(from, to, text);
