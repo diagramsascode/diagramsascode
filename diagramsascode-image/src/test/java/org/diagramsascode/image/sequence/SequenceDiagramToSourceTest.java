@@ -68,8 +68,6 @@ class SequenceDiagramToSourceTest {
     String actualSource = 
         ImageSource.of(diagram, new SequenceDiagramToSource()).toString();
     
-    assertEquals(expectedSource, actualSource);
-    
-    System.out.println(actualSource);
+    assertEquals(expectedSource, actualSource);    
   }
 }

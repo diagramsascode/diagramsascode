@@ -187,7 +187,6 @@ class ActivityDiagramToSourceTest {
       
       String actualSource = 
           ImageSource.of(diagram, new ActivityDiagramToSource()).toString();
-      System.out.println(actualSource);
       
       assertEquals(expectedSource, actualSource);
   }
