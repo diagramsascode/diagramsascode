@@ -3,8 +3,8 @@ package org.diagramsascode.state.edge;
 import org.diagramsascode.state.node.State;
 
 /**
- * A message edge on a sequence diagram.
- * It connects participants.
+ * A transition on a state diagram.
+ * It connects states.
  * 
  * @author b_muth
  *
