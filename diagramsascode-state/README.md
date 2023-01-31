@@ -1,4 +1,4 @@
-# Diagrams as code - sequence
+# Diagrams as code - state
 [![Gitter](https://badges.gitter.im/diagramsascode/community.svg)](https://gitter.im/diagramsascode/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 This sub project builds on the [diagramsascode-core](https://github.com/diagramsascode/diagramsascode/tree/main/diagramsascode-core) sub project to 
