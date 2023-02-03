@@ -1,6 +1,6 @@
 package org.diagramsascode.state.edge;
 
-import org.diagramsascode.state.node.State;
+import org.diagramsascode.state.node.StateDiagramNode;
 
 /**
  * A transition on a state diagram.
@@ -17,7 +17,7 @@ public class Transition extends StateDiagramEdge {
    * @param to the ending node of the edge
    * @param text the text of the edge
    */
-  public Transition(State from, State to, String text) {
+  public Transition(StateDiagramNode from, StateDiagramNode to, String text) {
     super(from, to, text);
   }
 }

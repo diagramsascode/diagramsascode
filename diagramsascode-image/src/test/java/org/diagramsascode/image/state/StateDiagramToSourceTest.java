@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.diagramsascode.core.Diagram;
 import org.diagramsascode.image.ImageSource;
 import org.diagramsascode.state.edge.Transition;
+import org.diagramsascode.state.node.InitialState;
 import org.diagramsascode.state.node.State;
 import org.junit.jupiter.api.Test;
 
@@ -53,15 +54,17 @@ class StateDiagramToSourceTest {
   }
   
   @Test
-  void convertsDiagramWithTwoEdgesToText() {
+  void convertsDiagramWithMutipleEdgesToText() {
+	final InitialState initial = new InitialState();
     final State node0  = new State("State0");
     final State node1  = new State("State1");
-    final Transition edge0 = new Transition(node0, node1, "edge0");
-    final Transition edge1 = new Transition(node1, node0, "edge1");
+    final Transition edge0 = new Transition(initial, node0, "");
+    final Transition edge1 = new Transition(node0, node1, "edge1");
+    final Transition edge2 = new Transition(node1, node0, "edge2");
     
     Diagram diagram = Diagram.builder()
-      .withNodes(node0, node1)
-      .withEdges(edge0, edge1)
+      .withNodes(initial, node0, node1)
+      .withEdges(edge0, edge1, edge2)
       .build();
     
     String n0 = node0.getId();
@@ -71,8 +74,9 @@ class StateDiagramToSourceTest {
       DIAGRAM_HEADER + 
       "state \"" + node0.getText() + "\" as " + n0 + "\n" +
       "state \"" + node1.getText() + "\" as " + n1 + "\n" +
-      n0 + " --> " + n1 +" : " + edge0.getText() + "\n" +
-      n1 + " --> " + n0 + " : " + edge1.getText() + "\n" +
+      "[*] --> " + n0 + "\n" +
+      n0 + " --> " + n1 +" : " + edge1.getText() + "\n" +
+      n1 + " --> " + n0 + " : " + edge2.getText() + "\n" +
       DIAGRAM_FOOTER;
     
     String actualSource = 
