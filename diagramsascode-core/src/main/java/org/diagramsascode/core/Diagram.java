@@ -138,7 +138,7 @@ public class Diagram{
      * 
      * @return a builder to continue building the diagram
      */
-    public NodeBuilder withNodes(List<DiagramNode> nodes) {
+    public NodeBuilder withNodes(List<? extends DiagramNode> nodes) {
       LinkedHashSet<DiagramNode> nodeSet = new LinkedHashSet<>(nodes);
       return new NodeBuilder(nodeSet);
     }
@@ -168,7 +168,7 @@ public class Diagram{
        * 
        * @return a builder to continue building the diagram
        */
-      public EdgeBuilder withEdges(List<DiagramEdge> edges) {
+      public EdgeBuilder withEdges(List<? extends DiagramEdge> edges) {
         LinkedHashSet<DiagramEdge> edgeSet = new LinkedHashSet<>(edges);
         return new EdgeBuilder(edgeSet);
       }

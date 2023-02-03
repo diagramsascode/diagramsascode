@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import org.diagramsascode.core.Diagram;
 import org.diagramsascode.core.DiagramConstraints;
@@ -12,6 +13,7 @@ import org.diagramsascode.core.DiagramEdge;
 import org.diagramsascode.core.DiagramNode;
 import org.diagramsascode.state.constraint.StateDiagramConstraints;
 import org.diagramsascode.state.edge.Transition;
+import org.diagramsascode.state.node.InitialState;
 import org.diagramsascode.state.node.State;
 import org.junit.jupiter.api.Test;
 
@@ -57,6 +59,7 @@ class DiagramTest {
   
   @Test
   void buildsDiagramWithMultipleNodesAndEdges() {
+	final DiagramNode initial = new InitialState();
     final State node1 = new State("Node1");
     final State node2 = new State("Node2");
     
@@ -66,8 +69,39 @@ class DiagramTest {
     DiagramConstraints constraints = new StateDiagramConstraints();
     
     Diagram diagram = Diagram.builder()
-      .withNodes(node1, node2)
+      .withNodes(initial, node1, node2)
       .withEdges(edge1, edge2)
+      .withConstraints(constraints)
+      .build();
+
+    Collection<DiagramNode> actualNodes = diagram.getNodes();
+    assertEquals(3, actualNodes.size());
+    Collection<DiagramNode> expectedNodes = Arrays.asList(initial, node1, node2);
+    assertTrue(actualNodes.containsAll(expectedNodes));
+ 
+    Collection<DiagramEdge> actualEdges = diagram.getEdges();
+    assertEquals(2, actualEdges.size());
+    Collection<DiagramEdge> expectedEdges = Arrays.asList(edge1, edge2);
+    assertTrue(actualEdges.containsAll(expectedEdges));
+    
+    assertEquals(constraints, diagram.getConstraints());
+  }
+  
+  @Test
+  void buildsDiagramWithMultipleNodesAndEdges_usingLists() {
+    final State node1 = new State("Node1");
+    final State node2 = new State("Node2");
+    List<State> states = Arrays.asList(node1,node2);
+    
+    final Transition edge1 = new Transition(node1, node2, "text1");
+    final Transition edge2 = new Transition(node2, node1, "text2");
+    List<Transition> transitions = Arrays.asList(edge1,edge2);
+    
+    DiagramConstraints constraints = new StateDiagramConstraints();
+    
+    Diagram diagram = Diagram.builder()
+      .withNodes(states)
+      .withEdges(transitions)
       .withConstraints(constraints)
       .build();
 
