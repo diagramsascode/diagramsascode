@@ -114,6 +114,10 @@ ActivityDiagramImage.of(diagram).writeToPngFile(outputFile);
 System.out.println("Activity diagram written to: " + outputFile);
 ```
 
+## Generate a state diagram image
+``` java
+```
+
 # Constraints
 ## Sequence diagram constraints
 A sequence diagram has to take the following constraints into account:
