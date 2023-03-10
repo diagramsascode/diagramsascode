@@ -1,6 +1,6 @@
 package org.diagramsascode.core;
 
-import java.util.Objects;
+import static java.util.Objects.requireNonNull;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -9,65 +9,75 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author b_muth
  *
  */
-public abstract class DiagramNode implements DiagramElement{
-  private static final String ID_PREFIX = "NODE";
-  private static final AtomicInteger ID_INDEX = new AtomicInteger();
-  
-  private final String id;
-  private final String text;
-  
-  /**
-   * Creates a new node.
-   * 
-   * @param text the text of the node
-   */
-  public DiagramNode(String text) {
-    this.id = newId();
-    this.text = Objects.requireNonNull(text, "text must be non-null");
-  }
-  
-  @Override
-  public String getId() {
-    return id;
-  }
-  
-  @Override
-  public final String getText() {
-    return text;
-  }
+public abstract class DiagramNode implements DiagramElement {
+	private static final String ID_PREFIX = "NODE";
+	private static final AtomicInteger ID_INDEX = new AtomicInteger();
 
-  private static String newId() {
-    return ID_PREFIX + ID_INDEX.getAndIncrement();
-  }
-  
-  @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((id == null) ? 0 : id.hashCode());
-    return result;
-  }
+	private final String id;
+	private final String text;
 
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    DiagramNode other = (DiagramNode) obj;
-    if (id == null) {
-      if (other.id != null)
-        return false;
-    } else if (!id.equals(other.id))
-      return false;
-    return true;
-  }
-  
-  @Override
-  public String toString() {
-    String text = getText().isEmpty()? "" : " [text=" + getText() + "]";
-    return getClass().getSimpleName() + text;
-  }
+	/**
+	 * Creates a new node.
+	 * 
+	 * @param text the text of the node
+	 */
+	public DiagramNode(String text) {
+		this(newId(), text);
+	}
+
+	/**
+	 * Creates a new node with the specified identifier and text.
+	 * 
+	 * @param id the identifier of the node
+	 * @param text the text of the node
+	 */
+	public DiagramNode(String id, String text) {
+		this.id = requireNonNull(id, "id must be non-null");
+		this.text = requireNonNull(text, "text must be non-null");
+	}
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public final String getText() {
+		return text;
+	}
+
+	private static String newId() {
+		return ID_PREFIX + ID_INDEX.getAndIncrement();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DiagramNode other = (DiagramNode) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		String text = getText().isEmpty() ? "" : " [text=" + getText() + "]";
+		return getClass().getSimpleName() + text;
+	}
 }

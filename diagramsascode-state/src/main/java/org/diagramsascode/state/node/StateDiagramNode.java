@@ -25,4 +25,14 @@ public abstract class StateDiagramNode extends DiagramNode {
 	public StateDiagramNode(String text) {
 		super(text);
 	}
+	
+	/**
+	 * Creates a new node with the specified identifier and text.
+	 * 
+	 * @param id the identifier of the node
+	 * @param text the text of the node
+	 */
+	public StateDiagramNode(String id, String text) {
+		super(id, text);
+	}
 }
