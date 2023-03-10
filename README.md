@@ -33,7 +33,7 @@ implementation 'org.diagramsascode:diagramsascode-image:0.1.3'
 
 The jar files are also available in 'Releases'.
 
-At least Java 8 is required to run diagrams as code.
+At least Java 11 is required to run diagrams as code.
 
 # Generate diagram images
 ## Generate a sequence diagram image
