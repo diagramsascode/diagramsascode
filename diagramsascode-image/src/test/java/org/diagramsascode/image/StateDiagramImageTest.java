@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class StateDiagramImageTest {
   @Test
-  void writesSequenceDiagramImageToFile() throws IOException {
+  void writesStateDiagramImageToFile() throws IOException {
     // Create the nodes
     var node0  = new State("Node 0");
     var node1  = new State("Node 1");
