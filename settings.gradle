@@ -1,6 +1,19 @@
+plugins {
+    id("org.gradle.toolchains.foojay-resolver") version "0.7.0"
+}
+
+toolchainManagement {
+    jvm {
+        javaRepositories {
+            repository("foojay") {
+                resolverClass = org.gradle.toolchains.foojay.FoojayToolchainResolver
+            }
+        }
+    }
+}
+
 include 'diagramsascode-core'
 include 'diagramsascode-activity'
 include 'diagramsascode-sequence'
 include 'diagramsascode-state'
 include 'diagramsascode-image'
-
