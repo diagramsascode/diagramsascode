@@ -21,14 +21,14 @@ If you are using Maven, include the following in your POM:
 <dependency>
   <groupId>org.diagramsascode</groupId>
   <artifactId>diagramsascode-image</artifactId>
-  <version>0.1.3</version>
+  <version>0.1.4</version>
 </dependency>
 ```
 
 If you are using Gradle, include the following in your build.gradle:
 
 ```
-implementation 'org.diagramsascode:diagramsascode-image:0.1.3'
+implementation 'org.diagramsascode:diagramsascode-image:0.1.4'
 ```
 
 The jar files are also available in 'Releases'.
