@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Objects;
 
+import net.sourceforge.plantuml.FileFormat;
+import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.SourceStringReader;
 import net.sourceforge.plantuml.core.DiagramDescription;
 
@@ -53,7 +55,27 @@ public class Image {
    */
   public void writeToPngStream(OutputStream outputStream) {
     SourceStringReader reader = readerOf(imageSource);
-    writeImageToStream(reader, outputStream);
+    writeImageToStream(reader, outputStream, FileFormat.PNG);
+  }
+
+  /**
+   * Writes a SVG image file to the specified location.
+   *
+   * @param outputFile the file to write to
+   */
+  public void writeToSvgFile(File outputFile) {
+    FileOutputStream outputStream = outputStreamFor(outputFile);
+    writeToSvgStream(outputStream);
+  }
+
+  /**
+   * Writes a SVG image file to the specified stream.
+   *
+   * @param outputStream the stream to write to
+   */
+  public void writeToSvgStream(OutputStream outputStream) {
+    SourceStringReader reader = readerOf(imageSource);
+    writeImageToStream(reader, outputStream, FileFormat.SVG);
   }
 
   private SourceStringReader readerOf(ImageSource imageSource) {
@@ -61,10 +83,9 @@ public class Image {
     return new SourceStringReader(sourceString);
   }
 
-  private DiagramDescription writeImageToStream(SourceStringReader reader, OutputStream outputStream) {
+  private DiagramDescription writeImageToStream(SourceStringReader reader, OutputStream outputStream, FileFormat fileFormat) {
     try {
-      DiagramDescription desc = reader.outputImage(outputStream);
-      return desc;
+      return reader.outputImage(outputStream, 0, new FileFormatOption(fileFormat));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
