@@ -1,6 +1,6 @@
 subprojects{
 	group = 'org.diagramsascode'
-	version = '0.1.4'
+	version = '0.1.5-SNAPSHOT'
 	
 	apply plugin: 'java-library'
 	apply plugin: 'maven-publish'
@@ -14,7 +14,7 @@ subprojects{
 	
 	java {
 	    toolchain {
-	        languageVersion = JavaLanguageVersion.of(17)
+	        languageVersion = JavaLanguageVersion.of(11)
 	    }
 		withSourcesJar()
 		withJavadocJar()
@@ -28,8 +28,8 @@ subprojects{
 	}
 	
 	dependencies {
-		testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
-		testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.1")
+		testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+		testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
 	}
 
 	test {
